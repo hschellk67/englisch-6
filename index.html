@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Englisch 6">
+<meta name="theme-color" content="#1e1b4b">
+<title>Englisch 6: Vokabeln & Grammatik</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234338ca'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='white' text-anchor='middle'%3EEN%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%234338ca'/%3E%3Ctext x='90' y='118' font-family='Arial' font-weight='700' font-size='80' fill='white' text-anchor='middle'%3EEN%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#f2f2f7; --card:#ffffff; --card2:#f6f6f9; --text:#0f172a; --muted:#64748b; --line:rgba(15,23,42,.09);
+  --ok:#059669; --okbg:#ecfdf5; --okline:#a7f3d0;
+  --bad:#e11d48; --badbg:#fff1f2; --badline:#fecdd3;
+  --warn:#b45309; --warnbg:#fffbeb; --warnline:#fde68a;
+  --shadow:0 1px 2px rgba(15,23,42,.04),0 8px 28px rgba(15,23,42,.07);
+  --bar:rgba(255,255,255,.78);
+  --mc:#4f46e5;
+  --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+  --sal:env(safe-area-inset-left,0px); --sar:env(safe-area-inset-right,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#000; --card:#1c1c1e; --card2:#2c2c2e; --text:#f5f5f7; --muted:#a1a1aa; --line:rgba(255,255,255,.1);
+    --ok:#34d399; --okbg:rgba(16,185,129,.14); --okline:rgba(52,211,153,.35);
+    --bad:#fb7185; --badbg:rgba(244,63,94,.14); --badline:rgba(251,113,133,.35);
+    --warn:#fbbf24; --warnbg:rgba(245,158,11,.13); --warnline:rgba(251,191,36,.35);
+    --shadow:0 0 0 1px rgba(255,255,255,.06);
+    --bar:rgba(28,28,30,.8);
+  }
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100vh;min-height:100dvh;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Inter,system-ui,sans-serif;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;touch-action:manipulation}
+button:disabled{cursor:default}
+input{font:inherit;font-size:17px;color:var(--text)}
+.ico{width:1.15em;height:1.15em;flex:none;display:inline-block;vertical-align:-.2em}
+.wrap{max-width:900px;margin:0 auto;padding-left:calc(16px + var(--sal));padding-right:calc(16px + var(--sar))}
+.hide{display:none!important}
+.muted{color:var(--muted)}
+
+/* Header */
+.top{position:sticky;top:0;z-index:20;background:var(--bar);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid var(--line);padding-top:var(--sat)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;text-align:left}
+.logo{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.02em;
+  background:linear-gradient(135deg,#4338ca,#7c3aed);box-shadow:0 4px 12px rgba(79,70,229,.35)}
+.brand h1{font-size:17px;margin:0;line-height:1.15;letter-spacing:-.01em}
+.brand p{margin:0;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pills{display:flex;align-items:center;gap:6px}
+.pill{display:flex;align-items:center;gap:5px;padding:6px 10px;border-radius:999px;background:var(--card);box-shadow:var(--shadow);font-weight:700;font-size:14px}
+.pill .f{color:#f59e0b}.pill .s{color:#10b981}
+
+main{padding-top:18px;padding-bottom:calc(96px + var(--sab))}
+body.in-game main{padding-bottom:calc(32px + var(--sab))}
+.view{display:none}
+.view.on{display:block;animation:in .28s ease-out}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.stack>*+*{margin-top:16px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;border-radius:26px;padding:24px 22px;color:#fff;
+  background:radial-gradient(120% 140% at 100% 0%,#7c3aed 0%,#4338ca 45%,#1e1b4b 100%);box-shadow:0 12px 32px rgba(49,46,129,.3)}
+.hero .deco{position:absolute;right:-18px;top:-22px;font-size:120px;font-weight:900;opacity:.09;letter-spacing:-.05em;line-height:1;pointer-events:none}
+.hero .eyebrow{color:#fff;display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  background:rgba(255,255,255,.15);padding:5px 10px;border-radius:999px}
+.hero h2{font-size:clamp(24px,5.5vw,34px);line-height:1.12;margin:12px 0 8px;letter-spacing:-.02em;max-width:560px;position:relative}
+.hero p{margin:0;color:rgba(255,255,255,.82);max-width:540px;position:relative}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;position:relative}
+.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px 12px}
+.stat b{display:block;font-size:22px;line-height:1.1}
+.stat span{font-size:12px;color:rgba(255,255,255,.75)}
+.meter{height:6px;border-radius:9px;background:rgba(255,255,255,.18);margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;background:#34d399;border-radius:9px;transition:width .4s}
+.herobtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;position:relative}
+.hbtn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;font-weight:700;font-size:15px;background:#fff;color:#312e81}
+.hbtn.ghost{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.22)}
+.hbtn:active{transform:scale(.97)}
+
+.banner{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:20px;background:var(--warnbg);border:1px solid var(--warnline)}
+.banner .bi{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#f59e0b;color:#fff;flex:none}
+.banner h3{margin:0;font-size:15px}
+.banner p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.banner .grow{flex:1;min-width:0}
+.btn-sm{padding:10px 14px;border-radius:12px;background:#d97706;color:#fff;font-weight:700;font-size:14px;white-space:nowrap}
+.btn-sm:active{transform:scale(.96)}
+
+.sec-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:26px 4px 10px}
+.modes{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:640px){.modes{grid-template-columns:1fr 1fr}}
+.mode{display:flex;flex-direction:column;gap:12px;text-align:left;width:100%;padding:18px;border-radius:22px;background:var(--card);box-shadow:var(--shadow)}
+.mode .head{display:flex;gap:14px;align-items:flex-start}
+.mode .mi{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;flex:none;font-size:22px;
+  color:var(--mc);background:color-mix(in srgb,var(--mc) 14%,transparent)}
+.mode h3{margin:0 0 3px;font-size:17px;letter-spacing:-.01em}
+.mode p{margin:0;font-size:14px;color:var(--muted);line-height:1.45}
+.mode .bar{height:7px;border-radius:9px;background:var(--line);overflow:hidden}
+.mode .bar i{display:block;height:100%;background:var(--mc);border-radius:9px;transition:width .4s}
+.mode .row{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:700;color:var(--mc)}
+.mode .btns{display:flex;gap:8px}
+.mbtn{flex:1;height:46px;border-radius:14px;background:var(--mc);color:#fff;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px}
+.mbtn.sec{flex:none;width:46px;background:color-mix(in srgb,var(--mc) 12%,transparent);color:var(--mc)}
+.mbtn:active{transform:scale(.97)}
+.rec{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:8px;background:#f59e0b;color:#fff;margin-left:6px;vertical-align:2px}
+
+.plan{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:16px 18px}
+.plan h3{margin:0 0 4px;font-size:16px}
+.plan ol{margin:8px 0 0;padding-left:20px;color:var(--muted);font-size:14px}
+.plan li{margin:3px 0}
+.plan li b{color:var(--text)}
+.foot{margin:28px 4px 0;font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.link{color:var(--muted);text-decoration:underline;font-size:12.5px}
+
+/* Tabbar */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bar);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-top:1px solid var(--line);padding-bottom:var(--sab)}
+.tabbar .wrap{display:flex;justify-content:space-around;height:62px;max-width:560px}
+.tab{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:11px;font-weight:600;color:var(--muted)}
+.tab .ico{width:24px;height:24px}
+.tab.on{color:#4f46e5}
+@media (prefers-color-scheme:dark){.tab.on{color:#a5b4fc}}
+.tab .badge{position:absolute;top:6px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center}
+body.in-game .tabbar{display:none}
+
+/* Game */
+.gbar{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.key{height:52px;min-width:52px;padding:0 14px;border-radius:16px;background:var(--card);box-shadow:var(--shadow);font-weight:800;font-size:19px;display:grid;place-items:center}
+.key:active{transform:scale(.95)}
+.prog{flex:1}
+.prog .row{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:6px}
+.prog .row b{color:var(--mc)}
+.track{height:8px;border-radius:9px;background:var(--line);overflow:hidden}
+.track i{display:block;height:100%;border-radius:9px;background:var(--mc);transition:width .35s}
+.gcard{background:var(--card);border-radius:26px;box-shadow:var(--shadow);padding:22px 18px}
+@media (min-width:640px){.gcard{padding:30px}}
+.chiprow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+  padding:5px 10px;border-radius:9px;color:var(--mc);background:color-mix(in srgb,var(--mc) 12%,transparent)}
+.rulebtn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--mc);padding:6px 10px;border-radius:10px}
+.rulebtn:active{background:color-mix(in srgb,var(--mc) 10%,transparent)}
+.instr{color:var(--muted);font-size:15px;margin:12px 0 14px}
+.sentence{background:var(--card2);border-radius:18px;padding:20px 18px;font-size:clamp(19px,4.6vw,23px);line-height:1.9;font-weight:500}
+.blank{display:inline-block;width:9.5em;max-width:100%;margin:0 4px;padding:3px 10px;text-align:center;font-weight:700;color:var(--mc);
+  background:var(--card);border:2px solid color-mix(in srgb,var(--mc) 40%,transparent);border-radius:12px;outline:none;vertical-align:baseline;line-height:1.5}
+.blank.s{width:5.5em}
+.blank.l{width:12em}
+.inp{width:100%;min-width:0;height:54px;padding:0 16px;border-radius:15px;border:2px solid color-mix(in srgb,var(--mc) 40%,transparent);background:var(--card);font-weight:700;outline:none;margin-top:12px;color:var(--mc)}
+.blank:focus,.inp:focus{border-color:var(--mc);box-shadow:0 0 0 4px color-mix(in srgb,var(--mc) 18%,transparent)}
+.blank:disabled,.inp:disabled{opacity:1;-webkit-text-fill-color:currentColor}
+.is-ok{border-color:var(--ok)!important;background:var(--okbg)!important;color:var(--ok)!important}
+.is-bad{border-color:var(--bad)!important;background:var(--badbg)!important;color:var(--bad)!important}
+.is-warn{border-color:#f59e0b!important;background:var(--warnbg)!important}
+.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+.hintline{font-size:13px;color:var(--muted);margin-top:10px}
+
+.opts{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{min-height:56px;padding:12px 14px;border-radius:16px;background:var(--card2);border:2px solid var(--line);font-weight:600;font-size:16.5px;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:transform .12s}
+.opts.two .opt{justify-content:center;text-align:center;font-weight:700;font-size:17px}
+.opt:active{transform:scale(.98)}
+.opt.sel{border-color:var(--mc);background:color-mix(in srgb,var(--mc) 10%,transparent);color:var(--mc)}
+.opt.right{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt.dim{opacity:.5}
+
+.zone{min-height:66px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px;border-radius:18px;border:2px dashed color-mix(in srgb,var(--mc) 40%,transparent);background:color-mix(in srgb,var(--mc) 5%,transparent)}
+.zone .ph{font-size:14px;color:var(--muted);padding:0 4px}
+.zone.ok{border-style:solid;border-color:var(--ok);background:var(--okbg)}
+.zone.bad{border-style:solid;border-color:var(--bad);background:var(--badbg)}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;min-height:50px}
+.tile{padding:9px 13px;border-radius:13px;background:var(--card);border:2px solid var(--line);font-size:clamp(17px,4.2vw,20px);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.tile:active{transform:scale(.95)}
+.zone .tile{background:var(--mc);border-color:var(--mc);color:#fff}
+
+.fb{display:none;margin-top:18px;padding:14px 16px;border-radius:18px;border:1px solid}
+.fb.on{display:flex;gap:12px;animation:in .22s}
+.fb .fi{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#fff;flex:none}
+.fb h4{margin:3px 0 2px;font-size:16px}
+.fb p{margin:4px 0 0;font-size:14.5px;line-height:1.5}
+.fb.ok{background:var(--okbg);border-color:var(--okline)}.fb.ok .fi{background:var(--ok)}
+.fb.bad{background:var(--badbg);border-color:var(--badline)}.fb.bad .fi{background:var(--bad)}
+.fb.warn{background:var(--warnbg);border-color:var(--warnline)}.fb.warn .fi{background:#f59e0b}
+.sol{display:inline-block;margin-top:6px;padding:4px 10px;border-radius:10px;background:var(--card);font-weight:700;font-size:15px}
+
+.actions{display:flex;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.btn{flex:1;height:52px;border-radius:16px;font-weight:700;font-size:17px;display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;background:var(--mc);
+  box-shadow:0 6px 18px color-mix(in srgb,var(--mc) 30%,transparent)}
+.btn:active{transform:scale(.98)}
+.btn:disabled{background:var(--line);color:var(--muted);box-shadow:none}
+.btn.dark{background:var(--text);color:var(--bg);box-shadow:none}
+.btn.ghost{background:var(--card2);color:var(--text);box-shadow:none;border:1px solid var(--line)}
+.btn.rose{background:#e11d48;--mc:#e11d48}
+.btn.auto{flex:none;padding:0 18px}
+
+/* Summary */
+.sum{text-align:center}
+.trophy{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;margin:4px auto 12px;font-size:34px;color:#fff;background:linear-gradient(135deg,#f59e0b,#ef4444)}
+.sum h2{margin:0;font-size:28px;letter-spacing:-.02em}
+.sum .sub{color:var(--muted);margin:6px 0 18px}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:460px;margin:0 auto 18px}
+.sgrid div{background:var(--card2);border-radius:16px;padding:12px 6px}
+.sgrid small{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.sgrid b{font-size:22px}
+.mlist{text-align:left;background:var(--warnbg);border:1px solid var(--warnline);border-radius:18px;padding:14px;margin-bottom:16px}
+.mlist h3{margin:0 0 4px;font-size:15px}
+.mitem{background:var(--card);border-radius:12px;padding:10px 12px;margin-top:8px;font-size:14.5px}
+.mitem .q{color:var(--muted);font-size:13.5px}
+.mitem .a{font-weight:700;color:var(--ok)}
+.sumbtns{display:flex;flex-wrap:wrap;gap:10px}
+.sumbtns .btn{min-width:180px}
+
+/* Cheat sheet */
+.seg{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 6px;margin:0 -2px}
+.seg::-webkit-scrollbar{display:none}
+.seg button{flex:none;padding:9px 14px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);font-weight:700;font-size:14px;color:var(--muted);white-space:nowrap}
+.seg button.on{background:var(--text);color:var(--bg)}
+.cs{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:20px 18px;border-top:5px solid var(--mc)}
+.cs h3{margin:0;font-size:19px;letter-spacing:-.01em}
+.cs .subt{margin:2px 0 0;color:var(--muted);font-size:14px}
+.cs .cols{display:grid;gap:16px;margin-top:16px}
+@media (min-width:700px){.cs .cols{grid-template-columns:1fr 1fr}}
+.cs h4{margin:0 0 8px;font-size:14px;color:var(--mc);text-transform:uppercase;letter-spacing:.04em}
+.cs ul{list-style:none;margin:0;padding:0}
+.cs li{position:relative;padding-left:20px;margin:7px 0;font-size:15px;line-height:1.5}
+.cs li:before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--mc)}
+.cs code,.fb code,.mitem code{font-family:inherit;font-weight:700;background:color-mix(in srgb,var(--mc) 10%,transparent);color:var(--mc);padding:1px 6px;border-radius:6px}
+.formula{margin-top:14px;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--mc) 9%,transparent);font-weight:700;font-size:16px;text-align:center;color:var(--mc)}
+.pit{margin-top:16px;display:flex;gap:12px;padding:12px 14px;border-radius:16px;background:var(--warnbg);border:1px solid var(--warnline);font-size:14.5px}
+.pit .ico{color:#d97706;width:22px;height:22px;margin-top:1px}
+.cs .go{margin-top:16px}
+
+/* Exam */
+.examhead{text-align:center}
+.examhead .ei{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;margin:4px auto 12px;color:#fff;background:linear-gradient(135deg,#4338ca,#7c3aed)}
+.examhead .ei .ico{width:36px;height:36px}
+.examhead h2{margin:0;font-size:26px;letter-spacing:-.02em}
+.examhead p{color:var(--muted);max-width:520px;margin:8px auto 18px}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px;margin:0 auto 20px}
+.rules div{background:var(--card2);border-radius:16px;padding:12px 6px;text-align:center}
+.rules b{display:block;font-size:20px}
+.rules small{font-size:12px;color:var(--muted);font-weight:600}
+.ebar{position:sticky;top:calc(61px + var(--sat));z-index:15;display:flex;align-items:center;gap:12px;padding:10px 12px;margin-bottom:14px;border-radius:18px;background:var(--bar);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);box-shadow:var(--shadow)}
+.timer{font-variant-numeric:tabular-nums;font-weight:800;font-size:17px;padding:8px 12px;border-radius:12px;background:var(--card2);display:flex;align-items:center;gap:6px}
+.timer.low{background:var(--badbg);color:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.6}}
+.eq{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:18px;margin-bottom:12px}
+.eq .n{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:6px}
+.eq .n span:last-child{color:var(--mc)}
+.eq .instr{margin:0 0 10px;font-size:14px}
+.eq .sentence{font-size:clamp(17px,4.2vw,20px);padding:14px}
+.eq .opts{margin-top:12px}
+.eq.done{border-left:5px solid var(--mc)}
+.grade{font-size:84px;font-weight:900;line-height:1;letter-spacing:-.04em;margin:6px 0 2px;background:linear-gradient(135deg,#4338ca,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tbreak{display:grid;gap:10px;max-width:520px;margin:0 auto 18px;text-align:left}
+.tb{background:var(--card2);border-radius:14px;padding:10px 12px}
+.tb .row{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:6px}
+.tb .bar{height:7px;border-radius:9px;background:var(--line);overflow:hidden}
+.tb .bar i{display:block;height:100%;background:var(--mc);border-radius:9px}
+.corr{border-radius:18px;padding:14px;margin-bottom:10px;border:1px solid;font-size:14.5px}
+.corr.ok{background:var(--okbg);border-color:var(--okline)}
+.corr.bad{background:var(--badbg);border-color:var(--badline)}
+.corr .q{font-weight:600}
+.corr .you{margin-top:6px}
+.corr .ex{margin-top:6px;color:var(--muted);font-size:13.5px}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px}
+
+/* Review list */
+.empty{text-align:center;padding:30px 20px;background:var(--card);border-radius:26px;box-shadow:var(--shadow)}
+.empty .ei{width:64px;height:64px;border-radius:20px;margin:0 auto 12px;display:grid;place-items:center;background:var(--okbg);color:var(--ok)}
+.empty .ei .ico{width:32px;height:32px}
+.empty h2{margin:0 0 6px;font-size:22px}
+.empty p{color:var(--muted);margin:0 0 16px}
+
+/* Sheet / modal */
+.scrim{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.4);display:none;align-items:flex-end;justify-content:center}
+.scrim.on{display:flex;animation:fade .2s}
+@keyframes fade{from{opacity:0}}
+.sheet{width:100%;max-width:640px;max-height:86vh;overflow:auto;background:var(--bg);border-radius:26px 26px 0 0;padding:10px 16px calc(20px + var(--sab));animation:up .25s ease-out}
+@keyframes up{from{transform:translateY(40px)}}
+@media (min-width:700px){.scrim{align-items:center}.sheet{border-radius:26px;padding-bottom:20px}}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:4px auto 12px}
+.sheet .shead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.sheet .shead h3{margin:0;font-size:18px}
+.close{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--card)}
+.dlg{padding:6px 4px}
+.dlg h3{margin:0 0 6px;font-size:20px}
+.dlg p{margin:0 0 18px;color:var(--muted)}
+.dlg .actions{border:0;padding:0;margin:0}
+
+.toast{position:fixed;left:50%;top:calc(72px + var(--sat));transform:translateX(-50%);z-index:60;padding:10px 16px;border-radius:999px;background:var(--text);color:var(--bg);font-weight:700;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.2);display:none}
+.toast.on{display:block;animation:in .25s}
+
+/* Tagesplan */
+.today{background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:16px 18px}
+.today h3{margin:0 0 10px;font-size:16px;display:flex;justify-content:space-between;align-items:center}
+.titem{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.titem:first-of-type{border-top:0}
+.tcheck{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;border:2px solid var(--line);color:transparent}
+.tcheck.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.titem .grow{flex:1;min-width:0}
+.titem b{display:block;font-size:15px}
+.titem small{color:var(--muted);font-size:13px}
+.titem .mini{height:5px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:6px}
+.titem .mini i{display:block;height:100%;background:var(--ok);border-radius:9px}
+.tgo{padding:9px 13px;border-radius:12px;font-weight:700;font-size:14px;color:#fff;background:var(--mc,#4f46e5);white-space:nowrap}
+.tgo:active{transform:scale(.96)}
+.unitsel{margin-top:12px;position:relative;font:inherit;font-size:14px;font-weight:700;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:8px 10px}
+.unitsel option{color:#000}
+
+/* Vokabeln */
+.vstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.vstat{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:12px 14px}
+.vstat b{display:block;font-size:24px;line-height:1.1}
+.vstat span{font-size:12.5px;color:var(--muted);font-weight:600}
+.vstat.ok b{color:var(--ok)}.vstat.pr b{color:#d97706}
+.ring{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:22px;box-shadow:var(--shadow);padding:14px 16px}
+.ring svg{width:56px;height:56px;flex:none;transform:rotate(-90deg)}
+.ring .grow{flex:1}
+.ring h3{margin:0;font-size:16px}
+.ring p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 6px;margin:0 -2px}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;display:flex;align-items:center;gap:6px;padding:8px 12px;border-radius:12px;background:var(--card);box-shadow:var(--shadow);font-weight:700;font-size:13.5px;color:var(--muted);white-space:nowrap}
+.chips button.on{background:var(--text);color:var(--bg)}
+.chips button small{font-size:11px;opacity:.7}
+.chips button.weak.on{background:var(--bad);color:#fff}
+.vprompt{text-align:center;background:var(--card2);border-radius:20px;padding:26px 16px 22px}
+.vprompt .lbl{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.vprompt .word{font-size:clamp(28px,7.5vw,40px);font-weight:800;letter-spacing:-.02em;margin:6px 0 2px;line-height:1.15}
+.vprompt .also{font-size:14px;color:var(--muted)}
+.vprompt .reveal{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.vprompt .reveal .word{font-size:clamp(22px,6vw,30px);color:var(--mc)}
+.spk{width:40px;height:40px;border-radius:50%;display:inline-grid;place-items:center;background:var(--card);color:var(--mc);box-shadow:var(--shadow);vertical-align:middle;margin-left:6px}
+.spk:active{transform:scale(.92)}
+.dots{display:flex;gap:4px;align-items:center}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--ok)}
+.hintbtn{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;color:#b45309;padding:8px 12px;border-radius:12px;background:var(--warnbg);border:1px solid var(--warnline);margin-top:12px}
+.hintline{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:700;letter-spacing:.12em;margin-left:8px;color:var(--text)}
+.diff{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:18px;font-weight:700;letter-spacing:.04em;margin-top:6px;background:var(--card);border-radius:10px;padding:6px 10px;display:inline-block}
+.diff mark{background:var(--bad);color:#fff;border-radius:4px;padding:0 2px}
+.vlist{background:var(--card);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+.vrow{display:flex;align-items:center;gap:10px;padding:11px 14px;border-top:1px solid var(--line)}
+.vrow:first-child{border-top:0}
+.vrow .st{width:10px;height:10px;border-radius:50%;flex:none;background:var(--line)}
+.vrow .st.pr{background:#f59e0b}.vrow .st.ok{background:var(--ok)}
+.vrow .grow{flex:1;min-width:0}
+.vrow b{font-size:15.5px}
+.vrow .de{color:var(--muted);font-size:14px}
+.vrow .tp{font-size:12.5px;color:var(--muted);opacity:.85}
+.vrow .spk{width:34px;height:34px;box-shadow:none;background:var(--card2)}
+.search{width:100%;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);padding:0 14px;outline:none;box-shadow:var(--shadow);font-weight:600}
+.search:focus{border-color:#4f46e5}
+.more{display:block;width:100%;padding:12px;font-weight:700;color:#4f46e5;border-top:1px solid var(--line)}
+.rate{display:flex;gap:10px;margin-top:16px}
+.btn.okb{background:var(--ok);box-shadow:0 6px 18px color-mix(in srgb,var(--ok) 30%,transparent)}
+.btn.badb{background:var(--bad);box-shadow:0 6px 18px color-mix(in srgb,var(--bad) 30%,transparent)}
+.confetti{position:fixed;left:50%;top:35%;transform:translate(-50%,-50%);z-index:70;pointer-events:none;white-space:nowrap;font-size:22px;font-weight:800;padding:14px 22px;border-radius:999px;background:var(--text);color:var(--bg);box-shadow:0 12px 32px rgba(0,0,0,.25);animation:pop 1.2s ease-out forwards}
+@keyframes pop{0%{opacity:0;transform:translate(-50%,-30%) scale(.6)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}100%{opacity:0;transform:translate(-50%,-90%) scale(1)}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <button class="brand" id="brand" aria-label="Zur Startseite">
+      <div class="logo">EN</div>
+      <div style="min-width:0">
+        <h1>Englisch 6</h1>
+        <p id="subline">6. Klasse · Schulaufgabe</p>
+      </div>
+    </button>
+    <div class="pills">
+      <div class="pill" title="Trefferserie"><span class="f" data-i="flame"></span><span id="streak">0</span></div>
+      <div class="pill" title="Erfahrungspunkte"><span class="s" data-i="star"></span><span id="xp">0</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- START -->
+  <section class="view on" id="v-home"></section>
+  <!-- SPICKZETTEL -->
+  <section class="view" id="v-cheat"></section>
+  <!-- SCHULAUFGABE -->
+  <section class="view" id="v-exam"></section>
+  <!-- VOKABELN -->
+  <section class="view" id="v-vocab"></section>
+  <!-- FEHLER -->
+  <section class="view" id="v-review"></section>
+  <!-- ÜBUNG -->
+  <section class="view" id="v-game"></section>
+</main>
+
+<nav class="tabbar">
+  <div class="wrap">
+    <button class="tab on" data-tab="home"><span data-i="home"></span>Start</button>
+    <button class="tab" data-tab="vocab"><span data-i="cards"></span>Vokabeln</button>
+    <button class="tab" data-tab="cheat"><span data-i="book"></span>Regeln</button>
+    <button class="tab" data-tab="exam"><span data-i="clock"></span>Probe-SA</button>
+    <button class="tab" data-tab="review"><span data-i="brain"></span>Fehler<span class="badge hide" id="badge">0</span></button>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================================
+   ICONS
+   ========================================================================= */
+const ICONS={
+  home:'<path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  book:'<path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 21.5A2.5 2.5 0 0 1 6.5 19H20v3H6.5"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  brain:'<path d="M12 5a3 3 0 1 0-5.99.13A4 4 0 0 0 4 12a4 4 0 0 0 2 3.46A3.5 3.5 0 0 0 12 18z"/><path d="M12 5a3 3 0 1 1 5.99.13A4 4 0 0 1 20 12a4 4 0 0 1-2 3.46A3.5 3.5 0 0 1 12 18z"/><path d="M12 5v13"/>',
+  flame:'<path fill="currentColor" stroke="none" d="M12 2c1 3.5 5 5.5 5 10.5A5 5 0 0 1 7 12.5c0-2 1-3.5 2-4.5.3 1.6 1 2.5 2 3 0-3 0-6 1-9z"/>',
+  star:'<path fill="currentColor" stroke="none" d="m12 2.5 2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/>',
+  check:'<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+  x:'<path d="M6 6l12 12M18 6 6 18"/>',
+  right:'<path d="m9 6 6 6-6 6"/>',
+  left:'<path d="m15 6-6 6 6 6"/>',
+  bulb:'<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',
+  play:'<path fill="currentColor" d="M7 4.5v15l12-7.5z"/>',
+  rotate:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>',
+  alert:'<path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/>',
+  target:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+  help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6v.6M12 17h.01"/>',
+  layers:'<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>',
+  trophy:'<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+  cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  cards:'<rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 6V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"/>',
+  speaker:'<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
+  pen:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>',
+  bolt:'<path fill="currentColor" stroke="none" d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+  shuffle:'<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>'
+};
+function ico(n,cls){return `<svg class="ico ${cls||''}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[n]||''}</svg>`}
+function paintIcons(root){(root||document).querySelectorAll('[data-i]').forEach(el=>{el.innerHTML=ico(el.dataset.i);el.removeAttribute('data-i')})}
+
+/* =========================================================================
+   INHALT: THEMEN & SPICKZETTEL
+   ========================================================================= */
+const TOPICS=[
+  {id:'going-to',name:'going to-future',short:'Pläne, Anzeichen & Short Answers',icon:'spark',color:'#4f46e5'},
+  {id:'question-tags',name:'Question tags',short:'Bestätigungsfragen: Plus-Minus-Regel',icon:'help',color:'#059669'},
+  {id:'prepositions',name:'Questions with prepositions',short:'Präposition ans Ende der Frage',icon:'target',color:'#d97706'},
+  {id:'comparison-numbers',name:'Comparison & Numbers',short:'Steigerung, Zahlen & Jahreszahlen',icon:'layers',color:'#e11d48'}
+];
+const T=id=>id==='vocab'?VT:TOPICS.find(t=>t.id===id);
+
+const CHEAT={
+ 'going-to':{
+   title:'going to-future',sub:'Pläne & sichtbare Anzeichen in der Zukunft',
+   formula:'am / is / are + going to + Infinitiv',
+   cols:[
+    {h:'Wann benutzt man es?',p:[
+      'Für <b>feste Pläne und Absichten</b>: <code>I\'m going to watch</code> the latest action movie.',
+      'Wenn man <b>schon jetzt ein Anzeichen</b> (evidence) sieht: Look at those dark clouds! <code>It\'s going to rain.</code>']},
+    {h:'So bildest Du es',p:[
+      'Aussage: I<code>\'m going to</code> watch · Madison <code>is going to</code> be · They <code>are going to</code> move',
+      'Verneinung: You <code>aren\'t going to</code> spend · He <code>isn\'t going to</code> buy · I<code>\'m not going to</code> eat',
+      'Frage: What <code>are</code> you <code>going to</code> do? · <code>Are</code> you <code>going to</code> help me?',
+      'Short Answers: Yes, I <code>am</code>. · No, I<code>\'m not</code>. · Yes, she <code>is</code>. · No, they <code>aren\'t</code>.']}
+   ],
+   pit:'Nie das Hilfsverb vergessen! Falsch: <i>I going to play.</i> Richtig: <i>I\'m going to play.</i> – In <b>positiven</b> Short Answers nie abkürzen: <i>Yes, I am.</i> (nicht <i>Yes, I\'m.</i>)'
+ },
+ 'question-tags':{
+   title:'Question tags',sub:'„…, oder?“ / „…, nicht wahr?“',
+   formula:'Satz + → Tag –   ·   Satz – → Tag +',
+   cols:[
+    {h:'Die Plus-Minus-Regel',p:[
+      'Satz <b>positiv</b> → Tag <b>negativ</b>: Jack is next to you, <code>isn\'t he?</code>',
+      'Satz <b>negativ</b> → Tag <b>positiv</b>: You aren\'t too disappointed, <code>are you?</code>',
+      'Im Tag steht immer ein <b>Pronomen</b>: Jack → he, Emily → she, the boys → they.']},
+    {h:'Welches Hilfsverb ins Tag?',p:[
+      '<b>be</b> (am/is/are/was/were): übernehmen → Emily was great, <code>wasn\'t she?</code>',
+      '<b>have got</b> und <b>can</b>: übernehmen → She has got a horse, <code>hasn\'t she?</code> · You can help me, <code>can\'t you?</code>',
+      'Vollverb im <b>Simple Present</b>: do/does → She looks mad, <code>doesn\'t she?</code>',
+      'Vollverb im <b>Simple Past</b>: did → He won the race, <code>didn\'t he?</code>']}
+   ],
+   pit:'<i>Emily <b>has got</b> a horse</i> → <code>hasn\'t she?</code> – aber <i>Emily <b>has</b> a horse</i> (ohne got = Vollverb) → <code>doesn\'t she?</code>'
+ },
+ 'prepositions':{
+   title:'Questions with prepositions',sub:'Die Präposition wandert ans Ende',
+   formula:'Fragewort + Hilfsverb + Subjekt + Verb + Präposition?',
+   cols:[
+    {h:'Englisch ≠ Deutsch',p:[
+      'Deutsch: Präposition vorne – <i>Worauf</i> wartet Leo? <i>An wen</i> schreibt Tony?',
+      'Englisch: Präposition <b>ganz am Ende</b> – What is Leo waiting <code>for</code>?',
+      'Für Personen: <b>Who</b>, für Sachen: <b>What</b>, für Orte: <b>Where</b>.']},
+    {h:'Beispiele aus dem Heft',p:[
+      'Where are you <code>from</code>? – Woher kommst du?',
+      'Who is Tony writing <code>to</code>? – An wen schreibt Tony?',
+      'What is Lou looking <code>at</code>? – Was schaut Lou an?',
+      'What is Tony thinking <code>about</code>? – Worüber denkt Tony nach?',
+      'What is Lou talking <code>about</code>? – Worüber spricht Lou?']}
+   ],
+   pit:'Die Präposition nie vor <i>What</i> oder <i>Who</i> setzen! Falsch: <i>About what is Tony thinking?</i> Richtig: <i>What is Tony thinking <b>about</b>?</i>'
+ },
+ 'comparison-numbers':{
+   title:'Comparison & Numbers',sub:'Steigerung, Zahlen & Jahreszahlen',
+   formula:'fast → faster → the fastest',
+   cols:[
+    {h:'Steigerung',p:[
+      'Normal: fast → <code>faster</code> → <code>the fastest</code>',
+      'Kurzer Vokal + 1 Konsonant → verdoppeln: big → <code>bigger</code> → <code>the biggest</code>',
+      'Stummes -e → nur -r/-st: nice → <code>nicer</code> → <code>the nicest</code>',
+      'Konsonant + y → -ier/-iest: funny → <code>funnier</code> → <code>the funniest</code>',
+      'Unregelmäßig: good → <code>better</code> → <code>the best</code> · bad → <code>worse</code> → <code>the worst</code>']},
+    {h:'Zahlen & Jahreszahlen',p:[
+      '1,000 = one thousand · 1,000,000 = one million (<b>Komma</b> bei Tausendern)',
+      '1.5 = one <b>point</b> five (<b>Punkt</b> bei Kommazahlen)',
+      '2026 = twenty twenty-six · 1998 = nineteen ninety-eight (Zweierblöcke)',
+      'the 1990s = the nineteen-nineties (ohne Apostroph)']}
+   ],
+   pit:'bad – <b>worse</b> – the <b>worst</b> (nie <i>worsed</i>). Beim Superlativ gehört <b>the</b> dazu. Und: Englisch 1,000 und 1.5 – genau umgekehrt wie im Deutschen!'
+ }
+};
+
+/* =========================================================================
+   FRAGENBANK
+   type: gap (Lücken im Satz, ___ = Lücke) | write (freie Antwort) | mc | order
+   a: akzeptierte Antworten (pro Lücke ein Array), show: angezeigte Lösung
+   trap: [{a:[...],m:'gezielte Rückmeldung'}] typische Fehler
+   ========================================================================= */
+const Q_RAW=[
+ // ---------- going to-future ----------
+ {id:'gt-1',t:'going-to',type:'gap',i:'Sichtbares Anzeichen – ergänze das going to-future.',s:'Look at those black clouds! It ___ (rain) soon.',a:[["'s going to rain",'is going to rain']],show:'is going to rain',trap:[{a:['going to rain'],m:'Da fehlt das Hilfsverb <code>is</code> vor going to!'}],ex:'Sichtbares Anzeichen (schwarze Wolken) → <code>is going to</code> + Infinitiv <code>rain</code>.'},
+ {id:'gt-2',t:'going-to',type:'gap',i:'Verneine im going to-future.',s:'You ___ (not / spend) time on the farm.',a:[["aren't going to spend",'are not going to spend',"'re not going to spend"]],show:"aren't going to spend",ex:'Bei <i>you</i> heißt die Verneinung <code>aren\'t</code> (are not) + going to spend.'},
+ {id:'gt-3',t:'going-to',type:'gap',i:'Bilde die Aussage im going to-future.',s:'I ___ (watch) the latest action movie tonight.',a:[["'m going to watch",'am going to watch']],show:'am going to watch',trap:[{a:['going to watch'],m:'Nach <i>I</i> braucht es <code>am</code> (\'m) vor going to.'}],ex:'Nach <i>I</i> steht <code>am</code> (kurz: \'m) + going to + Infinitiv.'},
+ {id:'gt-4',t:'going-to',type:'mc',i:'Wähle die richtige Kurzantwort.',s:'"Are you going to help me?" – "Yes, ___."',o:["I'm",'I am','I do','you are'],c:'I am',two:true,ex:'In <b>positiven</b> Short Answers nie abkürzen: <code>Yes, I am.</code>'},
+ {id:'gt-5',t:'going-to',type:'mc',i:'Wähle die richtige Kurzantwort.',s:'"Is Madison going to be in your class?" – "No, ___."',o:["she doesn't","she isn't","she aren't","it isn't"],c:"she isn't",two:true,ex:'Madison → <i>she</i>; die Frage beginnt mit <i>Is</i> → <code>No, she isn\'t.</code>'},
+ {id:'gt-6',t:'going-to',type:'order',i:'Bringe die Wörter in die richtige Reihenfolge.',w:['What','are','you','going to','do','this weekend?'],c:'What are you going to do this weekend?',ex:'Fragewort + Hilfsverb (<code>are</code>) + Subjekt + going to + Infinitiv.'},
+ {id:'gt-7',t:'going-to',type:'gap',i:'Ergänze das going to-future.',s:'They ___ (move) to Decorah next month.',a:[['are going to move',"'re going to move"]],show:'are going to move',ex:'Nach <i>they</i> steht <code>are</code> + going to + move.'},
+ {id:'gt-8',t:'going-to',type:'gap',i:'Ergänze die Frage (zwei Lücken).',s:'___ Ben ___ (play) football tomorrow?',a:[['is'],['going to play']],show:'Is Ben going to play',sz:['s','l'],ex:'In Fragen steht <code>Is</code> vor dem Subjekt, danach <code>going to play</code>.'},
+ {id:'gt-9',t:'going-to',type:'mc',i:'Warum steht hier das going to-future?',s:'"Watch out! The glass is going to fall!"',o:['Weil es ein Wunsch für nächstes Jahr ist.','Weil man ein deutliches Anzeichen sieht, dass es gleich passiert.','Weil es jeden Tag passiert.','Weil es schon vorbei ist.'],c:'Weil man ein deutliches Anzeichen sieht, dass es gleich passiert.',ex:'Das Glas steht an der Tischkante – ein klares Anzeichen (evidence).'},
+ {id:'gt-10',t:'going-to',type:'gap',i:'Verneine im going to-future.',s:'I ___ (not / buy) that expensive bike.',a:[["'m not going to buy",'am not going to buy']],show:'am not going to buy',trap:[{a:["amn't going to buy","don't going to buy","not going to buy"],m:'Bei <i>I</i> verneint man mit <code>\'m not</code> (am not).'}],ex:'Verneinung bei <i>I</i>: <code>I\'m not going to buy</code>.'},
+ {id:'gt-11',t:'going-to',type:'order',i:'Bilde eine Frage mit going to.',w:['Are','they','going to','visit','their grandparents?'],c:'Are they going to visit their grandparents?',ex:'Hilfsverb (<code>Are</code>) + Subjekt + going to + Infinitiv + Objekt.'},
+ {id:'gt-12',t:'going-to',type:'gap',i:'Verneine im going to-future.',s:'She ___ (not / be) late for school again.',a:[["isn't going to be",'is not going to be',"'s not going to be"]],show:"isn't going to be",ex:'Bei <i>she</i>: <code>isn\'t going to be</code>.'},
+ {id:'gt-13',t:'going-to',type:'mc',i:'Welcher Satz ist komplett richtig?',o:['We going to have a party on Friday.','We are go to have a party on Friday.','We are going to have a party on Friday.','We are going to having a party on Friday.'],c:'We are going to have a party on Friday.',ex:'<code>are</code> + going to + <b>unveränderter</b> Infinitiv <code>have</code>.'},
+ {id:'gt-14',t:'going-to',type:'gap',i:'Ergänze die Kurzantwort.',s:'"Are you and Tom going to train today?" – "No, ___."',a:[["we aren't",'we are not',"we're not"]],show:"we aren't",trap:[{a:["i'm not","i am not","you aren't","we don't"],m:'<i>you and Tom</i> – aus Sicht des Antwortenden ist das <b>we</b>.'}],ex:'„you and Tom“ = <code>we</code> → <code>No, we aren\'t.</code>'},
+ {id:'gt-15',t:'going-to',type:'order',i:'Setze den Satz richtig zusammen.',w:['My','sister','is','going to','bake','a cake.'],c:'My sister is going to bake a cake.',ex:'Subjekt + <code>is</code> + going to + Infinitiv + Objekt.'},
+ {id:'gt-16',t:'going-to',type:'gap',i:'Ergänze die Frage (zwei Lücken).',s:'___ your parents ___ (buy) a new car?',a:[['are'],['going to buy']],show:'Are your parents going to buy',sz:['s','l'],ex:'<i>your parents</i> = they → <code>Are</code> … <code>going to buy</code>?'},
+ {id:'gt-17',t:'going-to',type:'gap',i:'Ergänze die Kurzantwort.',s:'"Is Leo going to come to the party?" – "Yes, ___."',a:[['he is']],show:'he is',trap:[{a:["he's"],m:'Fast! In <b>positiven</b> Short Answers nie abkürzen: <code>he is</code>.'},{a:['he does','he do'],m:'Die Frage beginnt mit <i>Is</i> – also antwortest Du mit <code>is</code>.'}],ex:'Positive Kurzantwort, nicht abgekürzt: <code>Yes, he is.</code>'},
+ {id:'gt-18',t:'going-to',type:'mc',i:'Welcher Satz beschreibt ein sichtbares Anzeichen?',o:["I'm going to visit my aunt next summer.","Be careful! You're going to fall off the chair!","We're going to have pizza on Saturday.","She's going to learn French next year."],c:"Be careful! You're going to fall off the chair!",ex:'Man <b>sieht</b> gerade, dass jemand gleich vom Stuhl fällt. Die anderen Sätze sind Pläne.'},
+
+ // ---------- Question tags ----------
+ {id:'qt-1',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'Jack is next to you, ___',a:[["isn't he?","isn't he"]],show:"isn't he?",trap:[{a:["isn't jack?","isn't jack","is he?","is he"],m:'Satz positiv → Tag negativ, und im Tag steht ein Pronomen: <code>isn\'t he?</code>'}],ex:'Satz positiv (<i>is</i>) → Tag negativ. Jack → <i>he</i>.'},
+ {id:'qt-2',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'She looks really mad, ___',a:[["doesn't she?","doesn't she"]],show:"doesn't she?",trap:[{a:["isn't she?","isn't she","don't she?","don't she"],m:'<i>looks</i> ist ein Vollverb im Simple Present (she → -s) → <code>doesn\'t</code>.'}],ex:'Vollverb im Simple Present, 3. Person → <code>doesn\'t she?</code>'},
+ {id:'qt-3',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'They are a great team, ___',a:[["aren't they?","aren't they"]],show:"aren't they?",ex:'Positives <i>are</i> → <code>aren\'t they?</code>'},
+ {id:'qt-4',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'Emily was always great, ___',a:[["wasn't she?","wasn't she"]],show:"wasn't she?",trap:[{a:["isn't she?","isn't she"],m:'Achte auf die Zeit: <i>was</i> ist Simple Past → <code>wasn\'t</code>.'}],ex:'Simple Past mit <i>was</i> → <code>wasn\'t she?</code>'},
+ {id:'qt-5',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:"You aren't too disappointed, ___",a:[['are you?','are you']],show:'are you?',trap:[{a:["aren't you?","aren't you"],m:'Der Satz ist schon <b>negativ</b> → das Tag muss <b>positiv</b> sein.'}],ex:'Satz negativ → Tag positiv: <code>are you?</code>'},
+ {id:'qt-6',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'You can help me, ___',a:[["can't you?","can't you"]],show:"can't you?",trap:[{a:["don't you?","don't you"],m:'<i>can</i> wird ins Tag übernommen → <code>can\'t you?</code>'}],ex:'Modalverb <i>can</i> übernehmen und verneinen.'},
+ {id:'qt-7',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'He won the race, ___',a:[["didn't he?","didn't he"]],show:"didn't he?",trap:[{a:["doesn't he?","doesn't he","wasn't he?","wasn't he"],m:'<i>won</i> ist Simple Past (von win) → <code>didn\'t</code>.'}],ex:'Vollverb im Simple Past → <code>didn\'t he?</code>'},
+ {id:'qt-8',t:'question-tags',type:'mc',i:'Achtung Stolperfalle! Welches Tag passt?',s:'Emily has a new horse, ___',o:["hasn't she?","doesn't she?","isn't she?","didn't she?"],c:"doesn't she?",two:true,ex:'Nur <i>has</i> (ohne got) = Vollverb → <code>doesn\'t she?</code>'},
+ {id:'qt-9',t:'question-tags',type:'mc',i:'Und jetzt?',s:'Emily has got a new horse, ___',o:["doesn't she?","hasn't she?","haven't she?","isn't she?"],c:"hasn't she?",two:true,ex:'Bei <i>has got</i> ist <i>has</i> das Hilfsverb → <code>hasn\'t she?</code>'},
+ {id:'qt-10',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:"But it didn't work, ___",a:[['did it?','did it']],show:'did it?',ex:'<i>didn\'t</i> = negativ → Tag positiv: <code>did it?</code>'},
+ {id:'qt-11',t:'question-tags',type:'mc',i:'Welches Tag passt?',s:"Your parents don't like loud music, ___",o:["don't they?",'do they?','are they?','do you?'],c:'do they?',two:true,ex:'your parents → <i>they</i>; negativ → positiv: <code>do they?</code>'},
+ {id:'qt-12',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'We were at the cinema yesterday, ___',a:[["weren't we?","weren't we"]],show:"weren't we?",ex:'Positives <i>were</i> → <code>weren\'t we?</code>'},
+ {id:'qt-13',t:'question-tags',type:'mc',i:'Welches Tag passt?',s:'Tom plays the guitar well, ___',o:["isn't he?","don't he?","doesn't he?","didn't he?"],c:"doesn't he?",two:true,ex:'<i>plays</i> = Simple Present, he → <code>doesn\'t he?</code>'},
+ {id:'qt-14',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:"She can't swim very fast, ___",a:[['can she?','can she']],show:'can she?',ex:'<i>can\'t</i> = negativ → <code>can she?</code>'},
+ {id:'qt-15',t:'question-tags',type:'mc',i:'Welches Tag passt?',s:"The boys didn't miss the bus, ___",o:['did they?',"didn't they?",'were they?','do they?'],c:'did they?',two:true,ex:'the boys → <i>they</i>; negativ → <code>did they?</code>'},
+ {id:'qt-16',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:"Mum isn't at home, ___",a:[['is she?','is she']],show:'is she?',trap:[{a:["isn't she?","isn't she","is mum?","is mum"],m:'Satz negativ → Tag positiv, Mum → <i>she</i>: <code>is she?</code>'}],ex:'Mum → <i>she</i>; <i>isn\'t</i> → <code>is she?</code>'},
+ {id:'qt-17',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'You have got a dog, ___',a:[["haven't you?","haven't you"]],show:"haven't you?",trap:[{a:["don't you?","don't you"],m:'Bei <i>have got</i> ist <i>have</i> Hilfsverb → <code>haven\'t you?</code>'}],ex:'<i>have got</i> → <code>haven\'t you?</code>'},
+ {id:'qt-18',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'They play tennis every Friday, ___',a:[["don't they?","don't they"]],show:"don't they?",trap:[{a:["aren't they?","aren't they","doesn't they?","doesn't they"],m:'Vollverb im Simple Present, they → <code>don\'t they?</code>'}],ex:'<i>play</i> (they) → <code>don\'t they?</code>'},
+ {id:'qt-19',t:'question-tags',type:'gap',i:'Ergänze das Question tag.',s:'It was really cold yesterday, ___',a:[["wasn't it?","wasn't it"]],show:"wasn't it?",ex:'<i>was</i> → <code>wasn\'t it?</code>'},
+
+ // ---------- Questions with prepositions ----------
+ {id:'qp-1',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Woher kommst du?)',s:'Where are you ___?',a:[['from']],show:'from',sz:['s'],ex:'<i>be from</i> = herkommen → <code>Where are you from?</code>'},
+ {id:'qp-2',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Worauf wartet Leo?)',s:'What is Leo waiting ___?',a:[['for']],show:'for',sz:['s'],trap:[{a:['on'],m:'<i>warten auf</i> heißt <code>wait for</code>.'}],ex:'<i>wait for</i> = warten auf.'},
+ {id:'qp-3',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (An wen schreibt Tony?)',s:'Who is Tony writing ___?',a:[['to']],show:'to',sz:['s'],ex:'<i>write to</i> = schreiben an.'},
+ {id:'qp-4',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Was schaut Lou an?)',s:'What is Lou looking ___?',a:[['at']],show:'at',sz:['s'],trap:[{a:['for'],m:'<i>look for</i> = suchen. <i>Anschauen</i> heißt <code>look at</code>.'}],ex:'<i>look at</i> = anschauen.'},
+ {id:'qp-5',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Worüber denkt Tony nach?)',s:'What is Tony thinking ___?',a:[['about','of']],show:'about',sz:['s'],ex:'<i>think about</i> = nachdenken über.'},
+ {id:'qp-6',t:'prepositions',type:'order',i:'Bringe die Frage in die richtige Reihenfolge. (Worüber spricht Lou?)',w:['What','is','Lou','talking','about?'],c:'What is Lou talking about?',ex:'Die Präposition <code>about</code> steht ganz am Ende.'},
+ {id:'qp-7',t:'prepositions',type:'order',i:'Bilde die Frage: „Worauf wartet Leo?“',w:['What','is','Leo','waiting','for?'],c:'What is Leo waiting for?',ex:'What + is + Leo + waiting + <code>for</code>?'},
+ {id:'qp-8',t:'prepositions',type:'mc',i:'Wie fragt man richtig: „Wem hörst du gerade zu?“ (listen to)',o:['To who are you listening?','Who are you listening to?','Who you are listening to?','What are you listening for?'],c:'Who are you listening to?',ex:'Person → <i>Who</i>; Hilfsverb vor Subjekt; <code>to</code> ans Ende.'},
+ {id:'qp-9',t:'prepositions',type:'write',i:'Übersetze ins Englische (mit „are“).',s:'Woher kommst du?',a:[['where are you from?','where are you from']],show:'Where are you from?',trap:[{a:['from where are you?','from where are you','where you are from?','where you are from'],m:'Fragewort + <i>are</i> + <i>you</i> + Präposition am Ende: <code>Where are you from?</code>'}],ex:'Klassiker: <code>Where are you from?</code>'},
+ {id:'qp-10',t:'prepositions',type:'order',i:'Bilde die Frage: „Mit wem spricht Sarah?“',w:['Who','is','Sarah','talking','to?'],c:'Who is Sarah talking to?',ex:'<i>talk to sb</i> = mit jemandem sprechen → <code>to</code> ans Ende.'},
+ {id:'qp-11',t:'prepositions',type:'mc',i:'Welche Präposition fehlt? (Worüber lachen die Kinder?)',s:'What are the kids laughing ___?',o:['from','at','to','for'],c:'at',two:true,ex:'<i>laugh at</i> = lachen über.'},
+ {id:'qp-12',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Wem gehört dieses Handy?)',s:'Who does this mobile phone belong ___?',a:[['to']],show:'to',sz:['s'],ex:'<i>belong to</i> = gehören.'},
+ {id:'qp-13',t:'prepositions',type:'order',i:'Bilde die Frage: „An wen schreibt Tony?“',w:['Who','is','Tony','writing','to?'],c:'Who is Tony writing to?',ex:'Who + is + Tony + writing + <code>to</code>?'},
+ {id:'qp-14',t:'prepositions',type:'mc',i:'Welcher Satz ist FALSCH?',o:['What are you looking for?','Where is your new friend from?','About what is she talking?','Who are you waiting for?'],c:'About what is she talking?',ex:'Richtig wäre: <code>What is she talking about?</code>'},
+ {id:'qp-15',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Wonach suchst du?)',s:'What are you looking ___?',a:[['for']],show:'for',sz:['s'],trap:[{a:['at'],m:'<i>look at</i> = anschauen. <i>Suchen</i> heißt <code>look for</code>.'}],ex:'<i>look for</i> = suchen nach.'},
+ {id:'qp-16',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Wovor hat Mia Angst?)',s:'What is Mia afraid ___?',a:[['of']],show:'of',sz:['s'],ex:'<i>be afraid of</i> = Angst haben vor.'},
+ {id:'qp-17',t:'prepositions',type:'order',i:'Bilde die Frage: „Auf wen wartest du?“',w:['Who','are','you','waiting','for?'],c:'Who are you waiting for?',ex:'Person → <i>Who</i>; <code>for</code> ans Ende.'},
+ {id:'qp-18',t:'prepositions',type:'gap',i:'Ergänze die Präposition. (Woher kommt dein Freund?)',s:'Where does your friend come ___?',a:[['from']],show:'from',sz:['s'],ex:'<i>come from</i> = herkommen aus.'},
+
+ // ---------- Comparison & Numbers ----------
+ {id:'cn-1',t:'comparison-numbers',type:'gap',i:'Steigere (Comparative).',s:'An elephant is ___ (big) than a mouse.',a:[['bigger']],show:'bigger',trap:[{a:['biger'],m:'Kurzer Vokal + ein Konsonant → Konsonant verdoppeln: <code>bigger</code>.'}],ex:'big → <code>bigger</code> (g verdoppeln).'},
+ {id:'cn-2',t:'comparison-numbers',type:'gap',i:'Steigere (Superlative – mit „the“).',s:'That is ___ (funny) joke I know!',a:[['the funniest']],show:'the funniest',trap:[{a:['funniest'],m:'Fast! Beim Superlativ gehört <code>the</code> dazu.'},{a:['the funnyest','funnyest'],m:'Konsonant + y → <b>-iest</b>: <code>the funniest</code>.'}],ex:'funny → <code>the funniest</code> (y → i).'},
+ {id:'cn-3',t:'comparison-numbers',type:'gap',i:'Steigere (Comparative).',s:'Your new bike is ___ (nice) than my old one.',a:[['nicer']],show:'nicer',trap:[{a:['niceer'],m:'Stummes -e → nur noch <b>-r</b>: <code>nicer</code>.'}],ex:'nice → <code>nicer</code>.'},
+ {id:'cn-4',t:'comparison-numbers',type:'gap',i:'Steigere (Comparative).',s:'A cheetah is much ___ (fast) than a horse.',a:[['faster']],show:'faster',ex:'fast → <code>faster</code>.'},
+ {id:'cn-5',t:'comparison-numbers',type:'gap',i:'Achtung unregelmäßig! (Comparative)',s:'My English test was ___ (good) than last time.',a:[['better']],show:'better',trap:[{a:['gooder'],m:'<i>good</i> ist unregelmäßig: good – <code>better</code> – the best.'}],ex:'good – <code>better</code> – the best.'},
+ {id:'cn-6',t:'comparison-numbers',type:'gap',i:'Achtung unregelmäßig! (Superlative – mit „the“)',s:'Yesterday was ___ (bad) day of the week!',a:[['the worst']],show:'the worst',trap:[{a:['worst'],m:'Fast! Beim Superlativ gehört <code>the</code> dazu.'},{a:['the worsed','the baddest','the worse'],m:'bad – worse – <code>the worst</code> (mit -t!).'}],ex:'bad – worse – <code>the worst</code>.'},
+ {id:'cn-7',t:'comparison-numbers',type:'mc',i:'Wie lautet die Steigerung von „bad“?',o:['bad – badder – the baddest','bad – worse – the worsed','bad – worse – the worst','bad – better – the best'],c:'bad – worse – the worst',ex:'bad – worse – <code>the worst</code>.'},
+ {id:'cn-8',t:'comparison-numbers',type:'gap',i:'Steigere (Superlative – mit „the“).',s:'Leo has ___ (cool) sunglasses in our class.',a:[['the coolest']],show:'the coolest',trap:[{a:['coolest'],m:'Fast! Beim Superlativ gehört <code>the</code> dazu.'}],ex:'cool – cooler – <code>the coolest</code>.'},
+ {id:'cn-9',t:'comparison-numbers',type:'write',i:'Schreibe die Jahreszahl in Worten.',s:'2026',a:[['twenty twenty-six','twenty twenty six','two thousand and twenty-six','two thousand twenty-six','two thousand and twenty six','two thousand twenty six']],show:'twenty twenty-six',ex:'Zweierblöcke: 20 | 26 → <code>twenty twenty-six</code>.'},
+ {id:'cn-10',t:'comparison-numbers',type:'write',i:'Schreibe die Dezimalzahl in Worten.',s:'1.5',a:[['one point five']],show:'one point five',trap:[{a:['one comma five'],m:'Im Englischen sagt man <code>point</code>, nicht comma.'}],ex:'Dezimalpunkt → <code>point</code>.'},
+ {id:'cn-11',t:'comparison-numbers',type:'mc',i:'Wie schreibt und spricht man „die 1990er-Jahre“?',o:['the 1990s – the nineteen-nineties',"the 1990's – the nineteen-ninety",'the 90s – the ninety-nineteens','the 1990s – nineteen hundred ninety'],c:'the 1990s – the nineteen-nineties',ex:'Ohne Apostroph: <code>the 1990s</code> = the nineteen-nineties.'},
+ {id:'cn-12',t:'comparison-numbers',type:'write',i:'Schreibe in Worten.',s:'1,000',a:[['one thousand','a thousand']],show:'one thousand',trap:[{a:['one thousands','thousand'],m:'Ohne -s: <code>one thousand</code>.'}],ex:'1,000 = <code>one thousand</code>.'},
+ {id:'cn-13',t:'comparison-numbers',type:'write',i:'Schreibe in Worten.',s:'1,000,000',a:[['one million','a million']],show:'one million',trap:[{a:['one millions','one milion'],m:'Schreibweise: <code>one million</code> (zwei l, ohne -s).'}],ex:'1,000,000 = <code>one million</code>.'},
+ {id:'cn-14',t:'comparison-numbers',type:'gap',i:'Steigere (Comparative).',s:'The weather today is ___ (bad) than yesterday.',a:[['worse']],show:'worse',trap:[{a:['badder','worser'],m:'bad – <code>worse</code> – the worst.'}],ex:'bad → <code>worse</code>.'},
+ {id:'cn-15',t:'comparison-numbers',type:'mc',i:'Welche Schreibweise ist im Englischen richtig für „eintausend“?',o:['1.000','1,000','1;000','1:000'],c:'1,000',two:true,ex:'Tausender mit Komma (<code>1,000</code>), Kommazahlen mit Punkt (1.5).'},
+ {id:'cn-16',t:'comparison-numbers',type:'gap',i:'Steigere (Comparative).',s:'Today is ___ (hot) than yesterday.',a:[['hotter']],show:'hotter',trap:[{a:['hoter'],m:'Kurzer Vokal + ein Konsonant → verdoppeln: <code>hotter</code>.'}],ex:'hot → <code>hotter</code>.'},
+ {id:'cn-17',t:'comparison-numbers',type:'gap',i:'Steigere (Superlative – mit „the“).',s:'This is ___ (happy) day of my life!',a:[['the happiest']],show:'the happiest',trap:[{a:['happiest'],m:'Fast! Beim Superlativ gehört <code>the</code> dazu.'},{a:['the happyest'],m:'Konsonant + y → <b>-iest</b>: <code>the happiest</code>.'}],ex:'happy → <code>the happiest</code>.'},
+ {id:'cn-18',t:'comparison-numbers',type:'write',i:'Schreibe die Jahreszahl in Worten.',s:'1998',a:[['nineteen ninety-eight','nineteen ninety eight']],show:'nineteen ninety-eight',ex:'19 | 98 → <code>nineteen ninety-eight</code>.'},
+ {id:'cn-19',t:'comparison-numbers',type:'write',i:'Schreibe die Dezimalzahl in Worten.',s:'2.5',a:[['two point five']],show:'two point five',ex:'2.5 = <code>two point five</code>.'},
+ {id:'cn-20',t:'comparison-numbers',type:'mc',i:'Welche Steigerung ist richtig?',s:'large → ___',o:['largeer','larger','more large','largger'],c:'larger',two:true,ex:'Stummes -e → nur <code>-r</code>: larger.'}
+];
+
+
+/* =========================================================================
+   VOKABELN  [id, Kategorie, Englisch (1. = Anzeige), Deutsch (1. = Anzeige), Merkhilfe]
+   ========================================================================= */
+const CATS=[
+  {id:'feelings',label:'Gefühle & Alltag',icon:'💭'},
+  {id:'school',label:'Schule, Freizeit & Medien',icon:'🎬'},
+  {id:'nature',label:'Natur, Tiere & Orte',icon:'🦅'},
+  {id:'usa',label:'USA, Geschichte & Wetter',icon:'🌦️'},
+  {id:'verbs',label:'Verben & Ausdrücke',icon:'⚡'}
+];
+const V_RAW=[
+['v001','feelings',['embarrassing'],['peinlich'],'Doppel-r UND Doppel-s: em-bar-rass-ing'],
+['v002','verbs',['to end up'],['enden','schließlich landen'],'Umgangssprachlich: irgendwo landen'],
+['v003','school',['yearbook'],['Jahrbuch'],'year + book'],
+['v004','school',['LOL','laughing out loud'],['laut lachen (Abkürzung)'],'Laughing Out Loud'],
+['v005','feelings',['real'],['echt','wirklich'],'Kurzes Adjektiv: real'],
+['v006','feelings',['show-off','show off'],['Angeber/in','Angeber','Angeberin'],'Mit Bindestrich: show-off'],
+['v007','school',['art'],['Kunst'],'Schulfach Kunst'],
+['v008','verbs',['what a …','what a','what an'],['was für ein/e …','was für ein','was für eine'],'Ausruf vor einem Nomen im Singular: What a day!'],
+['v009','nature',['home town','hometown'],['Heimatstadt'],'Getrennt (home town) oder zusammen (hometown)'],
+['v010','feelings',['likes and dislikes'],['Vorlieben und Abneigungen'],'Plural: likes and dislikes'],
+['v011','nature',['huge'],['riesig'],'Endet auf -e'],
+['v012','nature',['field'],['Feld'],'i vor e: field'],
+['v013','nature',['hill'],['Hügel','Berg'],'Doppel-l: hill'],
+['v014','nature',['outdoors'],['draußen'],'Mit -s am Ende als Ortsangabe'],
+['v015','nature',['indoors'],['drinnen'],'Mit -s am Ende als Ortsangabe'],
+['v016','verbs',['to hang out with','to hang out'],['rumhängen mit','rumhängen'],'Zeit mit Freunden verbringen'],
+['v017','nature',['eagle'],['Adler'],'Beginnt mit ea-, endet auf -le'],
+['v018','feelings',['feeling'],['Gefühl'],'Doppel-e: feel + ing'],
+['v019','feelings',['embarrassed'],['verlegen'],'Doppel-r und Doppel-s: em-bar-rassed'],
+['v020','feelings',['nervous'],['nervös'],'Endung -ous: nervous'],
+['v021','feelings',['proud of','proud'],['stolz auf','stolz'],'Zusammen mit „of“: proud of'],
+['v022','school',['report'],['Bericht'],'re-port'],
+['v023','verbs',['during'],['während'],'Präposition der Zeit'],
+['v024','verbs',['actually'],['tatsächlich'],'Doppel-l: actual + ly'],
+['v025','nature',['barrel'],['Fass'],'Doppel-r: bar-rel'],
+['v026','school',['race'],['Wettkampf','Rennen'],'Endet auf -e'],
+['v027','feelings',['daughter'],['Tochter'],'Achtung: -augh- in der Mitte!'],
+['v028','feelings',['wheelchair'],['Rollstuhl'],'wheel + chair'],
+['v029','verbs',['to teach'],['unterrichten'],'Mit ea: teach'],
+['v030','verbs',['to tease sb','to tease','to tease somebody'],['jmdn. aufziehen','jemanden aufziehen','aufziehen'],'sb = somebody (jemand)'],
+['v031','school',['latest'],['neueste/r/s','neueste','neuester','neuestes'],'Superlativ von late'],
+['v032','school',['movie','film'],['Film'],'AE: movie · BE: film'],
+['v033','school',['movie theater','cinema','movie theatre'],['Kino'],'AE: movie theater · BE: cinema'],
+['v034','verbs',["there's nothing …","there's nothing",'there is nothing'],['Es gibt nichts …'],"Mit Apostroph: There's nothing better than …"],
+['v035','nature',['bird'],['Vogel'],'Mit ir: bird'],
+['v036','nature',['air'],['Luft'],'Mit ai: air'],
+['v037','verbs',['a bit'],['ein bisschen'],'Zwei Wörter: a bit'],
+['v038','feelings',['worried'],['beunruhigt','besorgt'],'y wird zu ied: worried'],
+['v039','verbs',['to move'],['umziehen','sich bewegen'],'Endet auf -e'],
+['v040','verbs',['to worry'],['sich Sorgen machen'],'Mit o und Doppel-r: worry'],
+['v041','school',['plan'],['Plan'],'Wie im Deutschen'],
+['v042','feelings',['life'],['Leben'],'Plural: lives'],
+['v043','verbs',['to have to'],['müssen'],'Ersatzform für must'],
+['v046','usa',['autumn','fall'],['Herbst'],'BE: autumn (stummes -n) · AE: fall'],
+['v047','nature',['rubbish','trash'],['Müll'],'BE: rubbish (Doppel-b) · AE: trash'],
+['v048','school',['maths','math'],['Mathe'],'BE: maths · AE: math'],
+['v049','nature',['shopping centre','shopping center','mall'],['Einkaufszentrum'],'BE: shopping centre · AE: mall'],
+['v050','school',['programme','program'],['Programm'],'BE: programme · AE: program'],
+['v051','school',['dialogue','dialog'],['Dialog'],'BE: dialogue · AE: dialog'],
+['v052','verbs',['to organise','to organize'],['organisieren'],'BE: organise · AE: organize'],
+['v053','verbs',['to practise','to practice'],['üben','trainieren'],'BE-Verb: practise · AE: practice'],
+['v054','verbs',['not any more','not anymore'],['nicht mehr'],'BE: not any more · AE: not anymore'],
+['v055','nature',['metre','meter'],['Meter'],'BE: metre · AE: meter'],
+['v056','feelings',['Mr / Mrs','Mr. / Mrs.','Mr/Mrs'],['Herr / Frau'],'BE ohne Punkt (Mr / Mrs), AE mit Punkt (Mr. / Mrs.)'],
+['v057','verbs',['to tell'],['erkennen','unterscheiden','erzählen'],'Kann auch „unterscheiden / erkennen“ bedeuten'],
+['v058','verbs',['to point'],['zeigen'],'Mit oi: point'],
+['v059','nature',['bench'],['Bank','Sitzbank'],'Sitzbank im Park'],
+['v060','verbs',['to grow up'],['aufwachsen'],'grow + up'],
+['v061','nature',['noise'],['Lärm'],'Mit oi und -se: noise'],
+['v062','nature',['pollution'],['Verschmutzung'],'Doppel-l: pol-lu-tion'],
+['v063','nature',['traffic jam'],['Stau'],'Doppel-f: traffic jam'],
+['v064','school',['event'],['Veranstaltung'],'e-vent'],
+['v065','nature',['public transport'],['öffentlicher Nahverkehr'],'public + transport'],
+['v066','feelings',['cheap'],['billig'],'Mit ea: cheap'],
+['v067','feelings',['expensive'],['teuer'],'ex-pen-sive'],
+['v068','nature',['far away'],['weit weg','entfernt'],'Zwei Wörter: far away'],
+['v069','nature',['space'],['Platz','Raum'],'Endet auf -ce'],
+['v070','nature',['pet'],['Haustier'],'Kurz: pet'],
+['v071','school',['outdoor activity'],['Freiluftaktivität'],'outdoor (ohne s) + activity'],
+['v072','feelings',['youth'],['Jugend'],'Mit ou und th: youth'],
+['v073','nature',['close'],['nahe'],'Endet auf -se'],
+['v074','verbs',['almost'],['fast','beinahe'],'Nur ein l: al-most'],
+['v075','school',['judge'],['Richter/in','Richter','Richterin'],'Mit dge: judge'],
+['v076','school',['point'],['Punkt'],'Mit oi: point'],
+['v077','school',['second'],['Sekunde'],'sec-ond'],
+['v078','school',['turn'],['Wendung'],'Mit ur: turn'],
+['v079','feelings',['poor'],['arm'],'Doppel-o: poor'],
+['v080','verbs',['to get'],['werden','bekommen'],'Allround-Verb: get'],
+['v081','verbs',['to fall off'],['herunterfallen'],'fall + off (Doppel-l, Doppel-f)'],
+['v082','feelings',['mad'],['wütend','verrückt'],'Kurz: mad'],
+['v083','verbs',['what a shame'],['wie schade'],'What a shame!'],
+['v084','verbs',['to train'],['trainieren'],'Mit ai: train'],
+['v085','verbs',['to fix'],['reparieren'],'Kurz: fix'],
+['v086','feelings',['positive'],['positiv'],'Mit -ive am Ende'],
+['v087','feelings',['negative'],['negativ'],'Mit -ive am Ende'],
+['v088','verbs',['up'],['hinauf'],'Kurz: up'],
+['v089','school',['watch'],['Armbanduhr'],'Mit tch: watch'],
+['v090','verbs',['to be interested in','to be interested'],['interessiert sein an','interessiert sein in','interessiert sein'],'Immer mit Präposition „in“!'],
+['v091','verbs',['I see.','I see'],['Ich verstehe.','Ich verstehe','Aha'],'Bedeutet „Aha / Ich verstehe“'],
+['v092','verbs',['I mean'],['Ich meine'],'Mit ea: mean'],
+['v093','verbs',['both'],['beide'],'Mit o und th: both'],
+['v094','school',['electronic'],['elektronisch'],'Mit c am Ende: electronic'],
+['v095','school',['search'],['Suche','suchen'],'Mit ear: search'],
+['v096','verbs',['to look up'],['nachschauen','nachschlagen'],'look + up'],
+['v097','school',['meaning'],['Bedeutung'],'mean + ing'],
+['v098','school',['time'],['Mal','Zeit'],'Endet auf -e'],
+['v099','feelings',['wonderful'],['wundervoll','wunderbar'],'Nur ein l am Ende: wonderful'],
+['v100','school',['news'],['Nachrichten'],'Immer mit -s: news'],
+['v101','school',['competition'],['Wettbewerb'],'com-pe-ti-tion'],
+['v102','school',['title'],['Titel'],'Mit -le am Ende: title'],
+['v103','verbs',['to feel'],['sich anfühlen','fühlen'],'Doppel-e: feel'],
+['v104','verbs',['to share'],['teilen'],'Endet auf -are'],
+['v105','verbs',['to enter'],['hineingehen','betreten'],'en-ter'],
+['v106','feelings',['to be surprised','surprised'],['überrascht sein','überrascht'],'sur-prised'],
+['v107','feelings',['himself'],['selber','sich selbst','selbst'],'him + self'],
+['v108','feelings',['dirty'],['dreckig','schmutzig'],'Mit ir: dirty'],
+['v109','nature',['flower'],['Blume'],'flow + er'],
+['v110','verbs',['could'],['konnte/n','konnte','konnten'],'Stummes l: could'],
+['v111','feelings',['confident'],['selbstsicher'],'con-fi-dent'],
+['v112','school',['moment'],['Moment'],'mo-ment'],
+['v113','feelings',['brilliant'],['toll','genial'],'Doppel-l: bril-liant'],
+['v114','verbs',['to leave'],['verlassen','lassen'],'Mit ea: leave'],
+['v115','verbs',['quickly'],['schnell'],'quick + ly'],
+['v116','feelings',['eye','an eye'],['Auge'],'e-y-e'],
+['v117','nature',['bee'],['Biene'],'Doppel-e: bee'],
+['v118','feelings',['clever'],['schlau','klug'],'clev-er'],
+['v119','feelings',['amazing'],['unglaublich','erstaunlich'],'Ohne e vor -ing: amazing'],
+['v120','feelings',['finished'],['fertig (beendet)','fertig'],'Nur ein n: fin-ished!'],
+['v121','feelings',['shocked'],['schockiert'],'Mit ck: shocked'],
+['v122','verbs',['to steal'],['stehlen'],'Mit ea: steal'],
+['v123','verbs',['to calm down'],['sich beruhigen'],'Stummes l in calm'],
+['v124','verbs',['to push'],['schubsen','drücken'],'Mit sh: push'],
+['v125','verbs',['to turn around','to turn round'],['sich umdrehen'],'turn around oder turn round'],
+['v126','feelings',['fight'],['Kampf','Streit'],'Mit -ight: fight'],
+['v127','feelings',['upset'],['aufgebracht'],'up + set'],
+['v128','feelings',['idiot'],['Idiot/in','Idiot','Idiotin'],'i-d-i-o-t'],
+['v129','verbs',['should'],['sollte'],'Stummes l: should'],
+['v130','verbs',['each other'],['einander'],'Zwei Wörter: each other'],
+['v131','verbs',['to take out'],['herausnehmen'],'take + out'],
+['v132','school',['paper'],['Papier'],'Nur ein p in der Mitte: pa-per'],
+['v133','feelings',['ready'],['bereit','fertig'],'Mit ea: ready'],
+['v134','school',['beginning'],['Anfang','Beginn'],'Doppel-n: be-gin-ning'],
+['v135','feelings',['related'],['verwandt'],'re-la-ted'],
+['v136','feelings',['strong'],['stark'],'str + ong'],
+['v137','verbs',['to hate'],['hassen'],'Endet auf -e'],
+['v138','school',['drama'],['Drama','Theater (Schulfach)'],'Wie im Deutschen'],
+['v139','nature',['fishing'],['Angeln'],'fish + ing'],
+['v140','usa',['region'],['Region'],'re-gion'],
+['v141','usa',['history'],['Geschichte'],'hi-sto-ry'],
+['v142','verbs',['to begin'],['beginnen','anfangen'],'Ein n im Infinitiv: begin'],
+['v143','usa',['settler'],['Siedler/in','Siedler','Siedlerin'],'Doppel-t: set-tler'],
+['v144','usa',['hurricane'],['Hurrikan','Wirbelsturm'],'Doppel-r: hur-ri-cane'],
+['v145','usa',['the largest','largest'],['der/die/das größte','größte'],'Superlativ von large'],
+['v146','usa',['century'],['Jahrhundert'],'cen-tu-ry'],
+['v147','usa',['slave'],['Sklave','Sklavin'],'Mit sl- am Anfang'],
+['v148','verbs',['until'],['bis'],'Nur ein l am Ende: until!'],
+['v149','usa',['civil war'],['Bürgerkrieg'],'civil + war'],
+['v150','verbs',['to end'],['enden','beenden'],'Kurz: end'],
+['v151','usa',['slavery'],['Sklaverei'],'slave + ry'],
+['v152','usa',['illegal'],['illegal'],'Doppel-l: il-le-gal'],
+['v153','usa',['African-American','African American'],['Afroamerikaner/in','Afroamerikaner','Afroamerikanerin'],'Mit Bindestrich: African-American'],
+['v154','school',['theme park'],['Vergnügungspark','Freizeitpark'],'theme (mit th) + park'],
+['v155','usa',['sunny'],['sonnig'],'Doppel-n: sun-ny'],
+['v156','verbs',['because of'],['wegen'],'Zwei Wörter: because of'],
+['v157','feelings',['retired'],['pensioniert','im Ruhestand'],'re-ti-red'],
+['v158','usa',['to rain'],['regnen'],'Mit ai: rain'],
+['v159','usa',['humid'],['feucht','schwül'],'hu-mid'],
+['v160','usa',['dry'],['trocken'],'Endet auf -y'],
+['v161','nature',['desert'],['Wüste'],'Nur ein s: desert (dessert = Nachtisch!)'],
+['v162','nature',['cattle'],['Vieh','Rinder'],'Doppel-t und -le: cattle'],
+['v163','nature',['bat'],['Fledermaus'],'Kurz: bat'],
+['v164','verbs',['to fly'],['fliegen'],'Endet auf -y'],
+['v165','verbs',['out of'],['aus … heraus','aus'],'out + of'],
+['v166','nature',['cave'],['Höhle'],'Endet auf -e: cave'],
+['v167','school',['hour'],['Stunde'],'Stummes h am Anfang: hour'],
+['v168','usa',['temperature'],['Temperatur'],'tem-pe-ra-ture'],
+['v169','usa',['degrees Fahrenheit','degree Fahrenheit','°F'],['Grad Fahrenheit'],'Fah-ren-heit'],
+['v170','usa',['degrees Celsius','degree Celsius','°C'],['Grad Celsius'],'Cel-si-us'],
+['v171','usa',['snow'],['Schnee'],'Mit ow: snow'],
+['v172','verbs',['than'],['als (bei Vergleichen)','als'],'Bei Vergleichen: bigger than'],
+['v173','verbs',['once'],['einmal'],'o-n-c-e'],
+['v174','usa',['three and a half times'],['dreieinhalbmal'],'three and a half times'],
+['v175','nature',['farmland'],['Ackerland'],'farm + land'],
+['v176','usa',['European'],['Europäer/in','Europäer','Europäerin','europäisch'],'Im Englischen groß: European'],
+['v177','usa',['industrial'],['industriell','Industrie-'],'in-dus-tri-al'],
+['v178','nature',['airport'],['Flughafen'],'air + port'],
+['v179','verbs',['by the way'],['übrigens'],'Drei Wörter: by the way'],
+['v180','verbs',['to take'],['dauern','nehmen'],'Endet auf -e'],
+['v181','nature',['camp'],['Camp','Lager'],'Wie im Deutschen'],
+['v182','verbs',['to introduce'],['vorstellen'],'in-tro-duce'],
+['v183','nature',['bridge'],['Brücke'],'Mit dge: bridge'],
+['v184','usa',['French'],['französisch','Französisch'],'Im Englischen groß: French'],
+['v185','usa',['industry'],['Industrie'],'in-dus-try'],
+['v186','usa',['cold'],['kalt'],'Kurz: cold'],
+['v187','usa',['warm'],['warm'],'Wie im Deutschen'],
+['v188','usa',['hot'],['heiß'],'Kurz: hot'],
+['v189','usa',['cloudy'],['wolkig','bewölkt'],'cloud + y'],
+['v190','usa',['rainy'],['regnerisch'],'rain + y'],
+['v191','usa',['clouds'],['Wolken'],'Plural von cloud'],
+['v192','usa',['sun'],['Sonne'],'Kurz: sun'],
+['v193','usa',['rain'],['Regen'],'Mit ai: rain'],
+['v194','usa',['wind'],['Wind'],'Wie im Deutschen'],
+['v195','usa',['a storm','storm'],['ein Sturm','Sturm'],'a storm'],
+['v196','usa',['a blizzard','blizzard'],['ein Schneesturm','Schneesturm'],'Doppel-z: bliz-zard'],
+['v197','usa',["It's raining.",'it is raining'],['Es regnet.'],'Present Progressive für das Wetter jetzt'],
+['v198','usa',['The sun is shining.'],['Die Sonne scheint.'],'shine verliert -e vor -ing: shining'],
+['v199','usa',["It's snowing.",'it is snowing'],['Es schneit.'],'snow + ing'],
+['v200','usa',['sunshine'],['Sonnenschein'],'sun + shine'],
+['v201','feelings',['grandpa'],['Opa'],'grand + pa'],
+['v202','school',['Latin'],['Latein','lateinisch'],'Im Englischen groß: Latin'],
+['v203','feelings',['beautiful'],['schön','wunderschön'],'b-e-a-u-tiful (nur ein l am Ende)'],
+['v204','school',['roller coaster','rollercoaster'],['Achterbahn'],'Doppel-l in roller'],
+['v205','verbs',['to bet'],['wetten'],'Kurz: bet'],
+['v206','nature',['take-off','takeoff'],['Start (Flugzeug)','Start','Abflug'],'Mit Bindestrich und Doppel-f: take-off'],
+['v207','feelings',['perfect'],['perfekt'],'Mit c statt k: perfect'],
+['v208','usa',['Cuban'],['kubanisch','Kubaner/in','Kubaner','Kubanerin'],'Im Englischen groß: Cuban'],
+['v209','school',['musician'],['Musiker/in','Musiker','Musikerin'],'music + ian'],
+['v210','school',['ride'],['Fahrt (Fahrgeschäft)','Fahrt'],'Endet auf -e'],
+['v211','verbs',['to kill'],['töten'],'Doppel-l: kill']
+];
+
+/* =========================================================================
+   UNITS / SCHULAUFGABEN
+   Neuer Stoff: neue Unit hier eintragen und Vokabeln/Aufgaben mit u:'<id>' versehen.
+   Ohne u-Angabe gehört alles zur ersten Unit.
+   ========================================================================= */
+const UNITS=[
+  {id:'sa1',title:'1. Schulaufgabe',exam:new Date(2026,10,26)}
+];
+const Q_ALL=Q_RAW.map(q=>Object.assign({u:'sa1'},q));
+const V_ALL=V_RAW.map(([id,cat,en,de,tip,u])=>({id,cat,en,de,tip,u:u||'sa1'}));
+let Q=[],V=[],UNIT=UNITS[UNITS.length-1];
+function setUnit(id){
+  UNIT=UNITS.find(u=>u.id===id)||UNITS[UNITS.length-1];
+  Q=Q_ALL.filter(q=>q.u===UNIT.id);V=V_ALL.filter(v=>v.u===UNIT.id);
+}
+const VT={id:'vocab',name:'Vokabeln',short:'',icon:'cards',color:'#0284c7'};
+
+/* =========================================================================
+   SPEICHER
+   ========================================================================= */
+const KEY='englisch6';
+const DAILY_GOAL=25;
+function freshState(){return {mastered:[],missed:[],xp:0,exams:[],vocab:{},day:{},unit:null}}
+let S=freshState();
+try{const d=JSON.parse(localStorage.getItem(KEY)||'null');if(d)S=Object.assign(S,d)}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+setUnit(S.unit);
+function todayKey(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()}
+function day(){if(S.day.d!==todayKey())S.day={d:todayKey(),v:0,g:0};return S.day}
+let streak=0;
+
+/* =========================================================================
+   AUSWERTUNG
+   ========================================================================= */
+function norm(s){
+  return String(s||'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/[“”„]/g,'"')
+    .replace(/^["\s]+|["\s]+$/g,'').replace(/\s+/g,' ').replace(/\s+([?.!,])/g,'$1').replace(/[.!]+$/,'').trim();
+}
+function noQ(s){return s.replace(/\?$/,'').trim()}
+function eq(u,a){u=norm(u);a=norm(a);return u===a||noQ(u)===noQ(a)}
+function lev(a,b){
+  const m=a.length,n=b.length;if(Math.abs(m-n)>2)return 9;
+  const d=Array.from({length:m+1},(_,i)=>{const r=Array(n+1).fill(0);r[0]=i;return r});for(let j=0;j<=n;j++)d[0][j]=j;
+  for(let i=1;i<=m;i++)for(let j=1;j<=n;j++){d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));
+    if(i>1&&j>1&&a[i-1]===b[j-2]&&a[i-2]===b[j-1])d[i][j]=Math.min(d[i][j],d[i-2][j-2]+1)}
+  return d[m][n];
+}
+/* Ergebnis: {r:'ok'|'near'|'trap'|'bad', m:msg} */
+function evaluate(q,ans){
+  if(q.type==='vocab'){const r=vEval(q.v,ans);return {r:r.r==='ok'||r.r==='alt'?'ok':r.r}}
+  if(q.type==='mc')return {r:ans===q.c?'ok':'bad'};
+  if(q.type==='order')return {r:norm(ans)===norm(q.c)?'ok':'bad'};
+  const arr=Array.isArray(ans)?ans:[ans];
+  let allOk=true,near=null;
+  for(let k=0;k<q.a.length;k++){
+    const u=arr[k]||'';
+    if(q.a[k].some(a=>eq(u,a)))continue;
+    if(q.a.length===1&&q.type==='gap'){ // Subjekt mitgeschrieben? ("It's going to rain")
+      const lw=(q.s.split('___')[0].trim().split(' ').pop()||'').replace(/^["“]/,'');
+      if(lw&&q.a[0].some(a=>eq(u,lw+a)||eq(u,lw+' '+a))){arr[0]=u;continue}
+    }
+    allOk=false;
+    if(!near){
+      const nu=noQ(norm(u));
+      for(const a of q.a[k]){
+        const na=noQ(norm(a));
+        if(nu.replace(/'/g,'')===na.replace(/'/g,'')&&nu){near='Fast! Da fehlt ein Apostroph (\').';break}
+        if(na.length>=4&&nu&&lev(nu,na)===1){near='Fast! Prüfe die Schreibweise noch einmal.';break}
+      }
+    }
+  }
+  if(allOk)return {r:'ok'};
+  if(q.trap&&q.a.length===1){
+    for(const t of q.trap)if(t.a.some(a=>eq(arr[0]||'',a)))return {r:'trap',m:t.m};
+  }
+  if(near)return {r:'near',m:near};
+  return {r:'bad'};
+}
+function solutionText(q){
+  if(q.type==='vocab')return q.v.en.join(' / ');
+  if(q.type==='mc')return q.c;
+  if(q.type==='order')return q.c;
+  return q.show;
+}
+function fullSentence(q){
+  if(q.type==='gap'){
+    let k=0;const out=q.s.replace(/___/g,()=>{const v=q.a.length===1?q.show:q.a[k][0];k++;return v}).replace(/\s\(([^)]*)\)/g,'').replace(/ '/g,"'");
+    return out.charAt(0).toUpperCase()+out.slice(1);
+  }
+  return '';
+}
+
+/* =========================================================================
+   HILFSFUNKTIONEN UI
+   ========================================================================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+function daysLeft(){const t=new Date();t.setHours(0,0,0,0);return Math.round((UNIT.exam-t)/864e5)}
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>t.classList.remove('on'),1800)}
+function topicStats(id){const qs=Q.filter(q=>q.t===id);const m=qs.filter(q=>S.mastered.includes(q.id)).length;return {n:qs.length,m,pct:Math.round(m/qs.length*100)}}
+function weakestTopic(){
+  return TOPICS.map(t=>{const st=topicStats(t.id);const miss=Q.filter(q=>q.t===t.id&&S.missed.includes(q.id)).length;return {t,score:st.pct-miss*8}}).sort((a,b)=>a.score-b.score)[0].t;
+}
+function updateHeader(){
+  $('#xp').textContent=S.xp;$('#streak').textContent=streak;
+  const nb=S.missed.length+weakVocab().length;const b=$('#badge');b.textContent=nb;b.classList.toggle('hide',!nb);
+  const d=daysLeft();
+  $('#subline').textContent=d>1?`6. Klasse · noch ${d} Tage`:d===1?'6. Klasse · SA morgen!':d===0?'6. Klasse · SA heute!':'6. Klasse · Grammatik';
+}
+
+/* Sheet */
+function openSheet(html){const sh=$('#sheet');sh.innerHTML='<div class="grab"></div>'+html;paintIcons(sh);$('#scrim').classList.add('on');sh.scrollTop=0}
+function closeSheet(){$('#scrim').classList.remove('on')}
+$('#scrim').addEventListener('click',e=>{if(e.target.id==='scrim')closeSheet()});
+
+function cheatCard(id,withGo){
+  const c=CHEAT[id],t=T(id);
+  return `<div class="cs" style="--mc:${t.color}">
+    <h3>${c.title}</h3><p class="subt">${c.sub}</p>
+    <div class="formula">${c.formula}</div>
+    <div class="cols">${c.cols.map(col=>`<div><h4>${col.h}</h4><ul>${col.p.map(p=>`<li>${p}</li>`).join('')}</ul></div>`).join('')}</div>
+    <div class="pit">${ico('alert')}<div><b>Stolperfalle:</b> ${c.pit}</div></div>
+    ${withGo?`<div class="go"><button class="btn" data-practice="${id}">${ico('play')} Dieses Thema üben</button></div>`:''}
+  </div>`;
+}
+function showRule(id){
+  openSheet(`<div class="shead"><h3>Regel nachschlagen</h3><button class="close" onclick="closeSheet()" aria-label="Schließen">${ico('x')}</button></div>${cheatCard(id,false)}`);
+}
+function confirmDlg(title,text,okLabel,onOk,cancelLabel){
+  openSheet(`<div class="dlg"><h3>${title}</h3><p>${text}</p><div class="actions"><button class="btn ghost" id="dlgNo">${cancelLabel||'Abbrechen'}</button><button class="btn" id="dlgYes">${okLabel}</button></div></div>`);
+  $('#dlgNo').onclick=closeSheet;$('#dlgYes').onclick=()=>{closeSheet();onOk()};
+}
+
+/* =========================================================================
+   NAVIGATION
+   ========================================================================= */
+let curTab='home';
+function go(tab){
+  curTab=tab;
+  document.body.classList.toggle('in-game',tab==='game');
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+  $('#v-'+tab).classList.add('on');
+  document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===tab));
+  if(tab==='home')renderHome();
+  if(tab==='cheat')renderCheat();
+  if(tab==='vocab')renderVocab();
+  if(tab==='exam'&&!EX.running)renderExamStart();
+  if(tab==='review')renderReview();
+  updateHeader();
+  window.scrollTo({top:0});
+}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{if(EX.running&&b.dataset.tab!=='exam'){confirmDlg('Probe-Schulaufgabe verlassen?','Deine bisherigen Antworten gehen verloren.','Verlassen',()=>{stopExam();go(b.dataset.tab)});return}go(b.dataset.tab)});
+$('#brand').onclick=()=>{if(curTab==='game'){leaveGame();return}if(EX.running)return;go('home')};
+document.addEventListener('click',e=>{const p=e.target.closest('[data-practice]');if(p){closeSheet();p.dataset.practice==='vocab'?startVocabWeak():startTopic(p.dataset.practice)}});
+
+/* =========================================================================
+   START
+   ========================================================================= */
+function renderHome(){
+  const total=Q.length,m=S.mastered.length,pct=Math.round(m/total*100),d=daysLeft(),vs=vStats(),dy=day();
+  const weak=weakestTopic(),wv=weakVocab().length,err=S.missed.length+wv;
+  const lastEx=S.exams[S.exams.length-1];
+  const vPct=Math.min(100,Math.round(dy.v/DAILY_GOAL*100));
+  let html=`<div class="stack">
+  <div class="hero">
+    <div class="deco">EN</div>
+    <span class="eyebrow">${ico('cal')} ${d>1?`Noch ${d} Tage bis zur Schulaufgabe`:d===1?'Morgen ist Schulaufgabe!':d===0?'Heute ist Schulaufgabe – viel Erfolg!':'Englisch 6. Klasse'}</span>
+    <h2>${m===0&&!vs.ok&&!vs.pr?'Bereit für die Englisch-Schulaufgabe?':dy.v>=DAILY_GOAL&&dy.g>0?'Tagesplan geschafft – stark!':'Weiter so – Schritt für Schritt.'}</h2>
+    <p>Vokabeln und Grammatik an einem Ort. Was Du falsch machst, kommt automatisch in Deine Fehler-Liste.</p>
+    ${UNITS.length>1?`<select class="unitsel" id="hUnit">${UNITS.map(u=>`<option value="${u.id}" ${u.id===UNIT.id?'selected':''}>${esc(u.title)}</option>`).join('')}</select>`:''}
+    <div class="stats">
+      <div class="stat"><b>${vs.ok}<small style="font-size:13px;opacity:.7">/${vs.n}</small></b><span>Vokabeln sicher</span><div class="meter"><i style="width:${Math.round(vs.ok/vs.n*100)}%"></i></div></div>
+      <div class="stat"><b>${m}<small style="font-size:13px;opacity:.7">/${total}</small></b><span>Grammatik</span><div class="meter"><i style="width:${pct}%"></i></div></div>
+      <div class="stat"><b>${lastEx?lastEx.grade:'–'}</b><span>letzte Probe-SA</span></div>
+    </div>
+  </div>
+  <div class="today"><h3><span>Dein Plan für heute</span><span class="muted" style="font-size:13px;font-weight:600">${new Date().toLocaleDateString('de-DE',{weekday:'long'})}</span></h3>
+    <div class="titem"><span class="tcheck ${dy.v>=DAILY_GOAL?'on':''}">${ico('check')}</span><div class="grow"><b>${DAILY_GOAL} Vokabeln</b><small>${Math.min(dy.v,DAILY_GOAL)} von ${DAILY_GOAL} richtig</small><div class="mini"><i style="width:${vPct}%"></i></div></div><button class="tgo" style="--mc:${VT.color}" id="tVoc">Los</button></div>
+    <div class="titem"><span class="tcheck ${dy.g>0?'on':''}">${ico('check')}</span><div class="grow"><b>Eine Grammatik-Runde</b><small>Empfohlen: ${weak.name}</small></div><button class="tgo" style="--mc:${weak.color}" id="tGram">Los</button></div>
+    ${err?`<div class="titem"><span class="tcheck">${ico('check')}</span><div class="grow"><b>Fehler wiederholen</b><small>${S.missed.length} Grammatik · ${wv} Vokabeln</small></div><button class="tgo" style="--mc:#e11d48" id="tErr">Los</button></div>`:''}
+    ${d>=0&&d<=3?`<div class="titem"><span class="tcheck ${lastEx&&Date.now()-lastEx.date<864e5?'on':''}">${ico('check')}</span><div class="grow"><b>Probe-Schulaufgabe</b><small>Kurz vor der SA: einmal unter Zeitdruck testen</small></div><button class="tgo" style="--mc:#7c3aed" id="tExam">Los</button></div>`:''}
+  </div>`;
+  html+=`<div class="sec-title">Grammatik-Themen</div><div class="modes">`;
+  for(const t of TOPICS){
+    const st=topicStats(t.id);
+    html+=`<div class="mode" style="--mc:${t.color}">
+      <div class="head"><div class="mi">${ico(t.icon)}</div><div><h3>${t.name}${t.id===weak.id&&st.pct<100?'<span class="rec">Tipp</span>':''}</h3><p>${t.short}</p></div></div>
+      <div><div class="row"><span>${st.m} von ${st.n} gemeistert</span><span>${st.pct}%</span></div><div class="bar" style="margin-top:6px"><i style="width:${st.pct}%"></i></div></div>
+      <div class="btns"><button class="mbtn" data-practice="${t.id}">${ico('play')} Üben</button><button class="mbtn sec" data-rule="${t.id}" aria-label="Regeln">${ico('book')}</button></div>
+    </div>`;
+  }
+  html+=`</div>
+  <button class="btn ghost" id="hMix" style="margin-top:12px">${ico('shuffle')} Bunter Grammatik-Mix · 12 Aufgaben</button>
+  <div class="sec-title">So lernst Du am besten</div>
+  <div class="plan"><h3>Bis zur Schulaufgabe</h3><ol>
+    <li><b>Jeden Tag ein bisschen</b> – 25 Vokabeln und eine Grammatik-Runde schlagen einmal stundenlang lernen.</li>
+    <li><b>Regeln zuerst</b> – vor dem ersten Üben eines Themas den Spickzettel lesen.</li>
+    <li><b>Vokabeln schreiben</b>, nicht nur ankreuzen – in der Schulaufgabe zählt die Rechtschreibung.</li>
+    <li><b>Fehler-Liste leeren</b> – Fehler zeigen genau, wo es noch hakt.</li>
+    <li><b>Probe-Schulaufgabe</b> – 2–3 Tage vorher und am Vortag, mit Timer.</li>
+  </ol></div>
+  <div class="foot"><span>Der Fortschritt wird nur auf diesem Gerät gespeichert.</span><button class="link" id="hReset">Fortschritt zurücksetzen</button></div>
+  </div>`;
+  $('#v-home').innerHTML=html;
+  $('#tVoc').onclick=()=>startVocab('write');
+  $('#tGram').onclick=()=>startTopic(weak.id);
+  if($('#tErr'))$('#tErr').onclick=()=>go('review');
+  if($('#tExam'))$('#tExam').onclick=()=>go('exam');
+  if($('#hUnit'))$('#hUnit').onchange=e=>{S.unit=e.target.value;save();setUnit(S.unit);renderHome();updateHeader()};
+  $('#hMix').onclick=()=>startSession(shuffle(Q).slice(0,12),{label:'Bunter Mix',kind:'mix'});
+  $('#v-home').querySelectorAll('[data-rule]').forEach(b=>b.onclick=()=>showRule(b.dataset.rule));
+  $('#hReset').onclick=()=>confirmDlg('Alles zurücksetzen?','Vokabel-Lernstand, gemeisterte Aufgaben, Fehler-Liste, XP und Probe-Noten werden gelöscht.','Zurücksetzen',()=>{const u=S.unit;S=freshState();S.unit=u;streak=0;save();renderHome();updateHeader();toast('Fortschritt gelöscht')});
+}
+
+/* =========================================================================
+   SPICKZETTEL
+   ========================================================================= */
+let cheatSel='all';
+function renderCheat(){
+  let html=`<div class="stack"><div><h2 style="margin:0 4px 2px;font-size:24px;letter-spacing:-.02em">Grammatik-Spickzettel</h2><p class="muted" style="margin:0 4px 12px">Alle Regeln aus dem Heft – kompakt, mit Stolperfallen.</p>
+  <div class="seg"><button data-cs="all" class="${cheatSel==='all'?'on':''}">Alle</button>${TOPICS.map(t=>`<button data-cs="${t.id}" class="${cheatSel===t.id?'on':''}">${t.name}</button>`).join('')}</div></div>`;
+  for(const t of TOPICS)if(cheatSel==='all'||cheatSel===t.id)html+=cheatCard(t.id,true);
+  html+='</div>';
+  $('#v-cheat').innerHTML=html;
+  $('#v-cheat').querySelectorAll('[data-cs]').forEach(b=>b.onclick=()=>{cheatSel=b.dataset.cs;renderCheat()});
+}
+
+/* =========================================================================
+   ÜBUNGSMODUS
+   ========================================================================= */
+let G=null;
+function startTopic(id){
+  const qs=Q.filter(q=>q.t===id);
+  const un=shuffle(qs.filter(q=>!S.mastered.includes(q.id)||S.missed.includes(q.id)));
+  const ma=shuffle(qs.filter(q=>S.mastered.includes(q.id)&&!S.missed.includes(q.id)));
+  startSession([...un,...ma].slice(0,10),{label:T(id).name,kind:'topic',topic:id});
+}
+function startReview(){
+  const qs=shuffle(Q.filter(q=>S.missed.includes(q.id)));
+  if(!qs.length){go('review');return}
+  startSession(qs.slice(0,15),{label:'Fehler-Wiederholung',kind:'review'});
+}
+function startSession(list,meta){
+  G={list,meta,idx:0,score:0,xp:0,wrong:[],tries:0,done:false,tiles:null};
+  go('game');renderQ();
+}
+function leaveGame(){
+  if(G&&G.idx>0&&!G.finished){confirmDlg('Runde beenden?','Was Du schon geübt hast, bleibt gespeichert.','Beenden',()=>go(G.mode?'vocab':'home'),'Weiterüben');return}
+  go(G&&G.mode?'vocab':'home');
+}
+function renderQ(){
+  if(G.mode){renderVQ();return}
+  const q=G.list[G.idx],t=T(q.t);G.tries=0;G.done=false;
+  const v=$('#v-game');v.style.setProperty('--mc',t.color);
+  let body='';
+  if(q.type==='gap'){
+    let k=0;
+    const s=esc(q.s).replace(/___/g,()=>{const sz=(q.sz&&q.sz[k])||'';return `<input class="blank ${sz}" data-k="${k++}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-label="Lücke">`});
+    body=`<div class="sentence">${s}</div>`;
+  }else if(q.type==='write'){
+    body=`<div class="sentence">${esc(q.s)}</div><input class="inp" data-k="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Auf Englisch …">`;
+  }else if(q.type==='mc'){
+    body=(q.s?`<div class="sentence">${esc(q.s)}</div>`:'')+`<div class="opts ${q.two?'two':''}">${shuffle(q.o).map(o=>`<button class="opt" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
+  }else if(q.type==='order'){
+    G.pool=shuffle(q.w.map((w,i)=>({i,w})));
+    if(G.pool.map(x=>x.w).join(' ')===q.c&&q.w.length>2)G.pool.push(G.pool.shift());
+    G.zone=[];
+    body=`<div class="zone" id="zone"></div><div class="pool" id="pool"></div>`;
+  }
+  const typed=q.type==='gap'||q.type==='write',ord=q.type==='order';
+  v.innerHTML=`<div class="gbar"><button class="key" id="gBack" aria-label="Zurück">${ico('left')}</button>
+    <div class="prog"><div class="row"><span>${esc(G.meta.label)}</span><span><b>${G.idx+1}</b> / ${G.list.length}</span></div><div class="track"><i style="width:${G.idx/G.list.length*100}%"></i></div></div></div>
+    <div class="gcard">
+      <div class="chiprow"><span class="chip">${ico(t.icon)} ${t.name}</span><button class="rulebtn" id="gRule">${ico('book')} Regel</button></div>
+      <p class="instr">${esc(q.i)}</p>
+      ${body}
+      <div class="fb" id="fb"></div>
+      <div class="actions" id="acts">
+        ${ord?`<button class="btn ghost auto" id="gReset">${ico('rotate')}</button>`:''}
+        ${typed||ord?`<button class="btn" id="gCheck" ${ord?'disabled':''}>Prüfen</button>`:''}
+        <button class="btn dark hide" id="gNext">${G.idx+1<G.list.length?'Weiter':'Ergebnis'} ${ico('right')}</button>
+      </div>
+    </div>`;
+  if(q.type==='mc'&&!typed){$('#acts').classList.add('hide')}
+  $('#gBack').onclick=leaveGame;
+  $('#gRule').onclick=()=>showRule(q.t);
+  $('#gNext').onclick=next;
+  if(typed){
+    const ins=[...v.querySelectorAll('[data-k]')];
+    ins.forEach((el,i)=>el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();if(G.done){next();return}if(i<ins.length-1&&!ins[i+1].value)ins[i+1].focus();else check()}}));
+    $('#gCheck').onclick=check;
+    setTimeout(()=>{if(matchMedia('(hover:hover)').matches)ins[0].focus()},50);
+  }
+  if(q.type==='mc')v.querySelectorAll('.opt').forEach(b=>b.onclick=()=>checkMC(b));
+  if(ord){drawTiles();$('#gReset').onclick=()=>{G.pool=[...G.pool,...G.zone];G.zone=[];drawTiles()};$('#gCheck').onclick=check}
+}
+function drawTiles(){
+  const z=$('#zone'),p=$('#pool');
+  z.innerHTML=G.zone.length?G.zone.map((x,i)=>`<button class="tile" data-z="${i}">${esc(x.w)}</button>`).join(''):'<span class="ph">Tippe die Wörter in der richtigen Reihenfolge an …</span>';
+  p.innerHTML=G.pool.map((x,i)=>`<button class="tile" data-p="${i}">${esc(x.w)}</button>`).join('');
+  z.querySelectorAll('[data-z]').forEach(b=>b.onclick=()=>{if(G.done)return;G.pool.push(...G.zone.splice(+b.dataset.z,1));drawTiles()});
+  p.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>{if(G.done)return;G.zone.push(...G.pool.splice(+b.dataset.p,1));drawTiles()});
+  $('#gCheck').disabled=G.pool.length>0;
+}
+function checkMC(btn){
+  if(G.done)return;
+  const q=G.list[G.idx],ans=btn.dataset.o,res=evaluate(q,ans);
+  document.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(b.dataset.o===q.c)b.classList.add('right');else if(b===btn)b.classList.add('wrong');else b.classList.add('dim')});
+  finish(q,res,ans);
+}
+function check(){
+  if(G.done)return;
+  const q=G.list[G.idx];let ans,els=[];
+  if(q.type==='order'){ans=G.zone.map(x=>x.w).join(' ')}
+  else{els=[...document.querySelectorAll('#v-game [data-k]')];ans=els.map(e=>e.value);if(ans.every(a=>!a.trim())){els[0].classList.add('shake');setTimeout(()=>els[0].classList.remove('shake'),400);els[0].focus();return}}
+  const res=evaluate(q,ans);
+  if(res.r==='near'&&G.tries===0){
+    G.tries++;
+    els.forEach((el,k)=>{if(!q.a[k].some(a=>eq(el.value,a))){el.classList.add('is-warn','shake');setTimeout(()=>el.classList.remove('shake'),400)}});
+    showFb('warn',res.m,'Du hast noch einen Versuch.','');
+    const f=els.find(e=>e.classList.contains('is-warn'));if(f)f.focus();
+    return;
+  }
+  if(q.type==='order'){$('#zone').classList.add(res.r==='ok'?'ok':'bad');$('#gReset').classList.add('hide')}
+  els.forEach((el,k)=>{el.disabled=true;el.classList.remove('is-warn');el.classList.add(res.r==='ok'||q.a[k].some(a=>eq(el.value,a))?'is-ok':'is-bad')});
+  finish(q,res,ans);
+}
+function showFb(kind,title,text,sol){
+  const fb=$('#fb');fb.className='fb on '+kind;
+  fb.innerHTML=`<div class="fi">${ico(kind==='ok'?'check':kind==='bad'?'x':'alert')}</div><div><h4>${title}</h4>${sol?`<div class="sol">${sol}</div>`:''}${text?`<p>${text}</p>`:''}</div>`;
+}
+function finish(q,res,ans){
+  G.done=true;
+  const ok=res.r==='ok';
+  if(ok){
+    G.score++;streak++;const gain=10+Math.min(streak-1,5);G.xp+=gain;S.xp+=gain;
+    if(!S.mastered.includes(q.id))S.mastered.push(q.id);
+    const wasMissed=S.missed.includes(q.id);S.missed=S.missed.filter(x=>x!==q.id);
+    const praise=['Richtig!','Genau so!','Perfekt!','Stark!','Sitzt!'][Math.floor(Math.random()*5)];
+    showFb('ok',praise+(wasMissed?' Fehler geknackt.':''),q.ex,'');
+  }else{
+    streak=0;
+    if(!S.missed.includes(q.id))S.missed.push(q.id);
+    G.wrong.push({q,ans});
+    showFb('bad',res.r==='trap'?'Typischer Fehler':'Leider falsch',(res.m?res.m+'<br>':'')+q.ex,'Richtig: '+esc(q.type==='gap'?fullSentence(q):solutionText(q)));
+  }
+  save();updateHeader();
+  $('#acts').classList.remove('hide');
+  const c=$('#gCheck');if(c)c.classList.add('hide');
+  const n=$('#gNext');n.classList.remove('hide');
+  if(!matchMedia('(hover:hover)').matches)$('#fb').scrollIntoView({behavior:'smooth',block:'nearest'});
+  setTimeout(()=>n.focus({preventScroll:true}),30);
+}
+function next(){
+  if(G.idx+1<G.list.length){G.idx++;renderQ();window.scrollTo({top:0})}
+  else summary();
+}
+function summary(){
+  G.finished=true;
+  if(!G.mode){day().g++;save()}
+  const n=G.list.length,p=Math.round(G.score/n*100);
+  const n0=G.mode?G.score+G.wrong.length:n;const head=G.mode&&G.wrong.length===0?'Alles gewusst!':p===100?'Alles richtig!':p>=80?'Sehr gut gemacht!':p>=50?'Gute Runde!':'Dranbleiben lohnt sich!';
+  const v=$('#v-game');v.style.setProperty('--mc','#4f46e5');
+  v.innerHTML=`<div class="gcard sum">
+    <div class="trophy">${ico('trophy')}</div>
+    <h2>${head}</h2><p class="sub">${esc(G.meta.label)} · ${G.score} von ${n} richtig</p>
+    <div class="sgrid"><div><small>Richtig</small><b>${G.score}</b></div><div><small>Quote</small><b>${p}%</b></div><div><small>XP</small><b>+${G.xp}</b></div></div>
+    ${G.wrong.length?`<div class="mlist"><h3>Das schauen wir uns noch mal an</h3>${G.wrong.map(w=>w.v?`<div class="mitem"><div class="q">${esc(w.v.de[0])}</div><div class="a">${esc(w.v.en[0])}</div></div>`:`<div class="mitem"><div class="q">${esc(w.q.s||w.q.i)}</div><div class="a">${esc(w.q.type==='gap'?fullSentence(w.q):solutionText(w.q))}</div></div>`).join('')}</div>`:''}
+    <div class="sumbtns">
+      <button class="btn ghost" id="sHome">Zur Übersicht</button>
+      ${!G.mode&&S.missed.length?`<button class="btn rose" id="sRev">Fehler üben (${S.missed.length})</button>`:''}
+      <button class="btn" id="sAgain">${ico('rotate')} Nochmal</button>
+    </div></div>`;
+  $('#sHome').onclick=()=>go(G.mode?'vocab':'home');
+  if($('#sRev'))$('#sRev').onclick=startReview;
+  $('#sAgain').onclick=()=>{const m=G.meta;if(m.kind==='vocab'){startVocab(m.vmode,m.pool,m.pool?m.label:null);return}if(m.kind==='topic')startTopic(m.topic);else if(m.kind==='review')startReview();else startSession(shuffle(Q).slice(0,12),m)};
+  window.scrollTo({top:0});
+}
+
+/* =========================================================================
+   VOKABEL-LOGIK (Lernkartei mit Boxen 0–3)
+   ========================================================================= */
+function vp(id){return S.vocab[id]||{b:0,s:0,w:0,t:0}}
+function vStatus(id){const p=S.vocab[id];return !p||!p.s?'new':p.b>=3?'ok':'pr'}
+function isWeak(id){const p=S.vocab[id];return !!p&&p.s>0&&p.b===0&&p.w>0}
+function weakVocab(){return V.filter(v=>isWeak(v.id))}
+function vStats(){let ok=0,pr=0,nw=0;V.forEach(v=>{const s=vStatus(v.id);if(s==='ok')ok++;else if(s==='pr')pr++;else nw++});return {ok,pr,nw,n:V.length}}
+function vnorm(s){
+  return String(s||'').toLowerCase().replace(/[’‘`´]/g,"'").replace(/…|\.\.\./g,' ').replace(/[.!?,;:]/g,' ')
+    .replace(/\s*\/\s*/g,' / ').replace(/\s+/g,' ').trim().replace(/^to /,'').replace(/ (sb|somebody|sth|something)$/,'').trim();
+}
+function vEval(v,ans){
+  const u=vnorm(ans);if(!u)return {r:'bad'};
+  if(v.en.some(e=>vnorm(e)===u))return {r:'ok'};
+  const prompt=v.de[0].toLowerCase();
+  const alt=V_ALL.find(o=>o.id!==v.id&&o.de.some(d=>d.toLowerCase()===prompt)&&o.en.some(e=>vnorm(e)===u));
+  if(alt)return {r:'alt',m:`„${esc(alt.en[0])}“ passt auch – gesucht ist hier aber ein anderes Wort.`};
+  for(const e of v.en){const t=vnorm(e),L=t.replace(/[^a-z]/g,'').length;if(L>=3&&lev(u,t)<=(L>=7?2:1))return {r:'near',m:'Fast! Prüfe die Schreibweise noch einmal.'}}
+  return {r:'bad'};
+}
+function vUpdate(id,ok,hinted){
+  const p=Object.assign({b:0,s:0,w:0,t:0},S.vocab[id]);p.s++;p.t=Date.now();
+  if(ok){if(!hinted)p.b=Math.min(3,p.b+1)}else{p.b=0;p.w++}
+  S.vocab[id]=p;
+}
+function vWeight(v){
+  const p=vp(v.id),box=Math.pow(.46,p.b),err=1+p.w*1.4+(p.b===0&&p.s>0?2.2:0),fair=p.s===0?2.5:1+1.5/(p.s+1);
+  const mins=p.t?(Date.now()-p.t)/6e4:90,time=Math.min(2,.75+mins/15);
+  return Math.max(.05,box*err*fair*time*(.8+Math.random()*.4));
+}
+function pickVocab(pool,n){
+  pool=[...pool];const out=[];
+  while(out.length<n&&pool.length){const w=pool.map(vWeight);let r=Math.random()*w.reduce((a,b)=>a+b,0),i=0;for(;i<w.length-1;i++){r-=w[i];if(r<=0)break}out.push(pool.splice(i,1)[0])}
+  return out;
+}
+function speak(t){
+  try{if(!('speechSynthesis' in window))return;speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(String(t).replace(/…|\.\.\./g,'').replace(/\//g,' or '));u.lang='en-GB';u.rate=.92;speechSynthesis.speak(u)}catch(e){}
+}
+function celebrate(){const c=document.createElement('div');c.className='confetti';c.textContent=['🎉','🔥','⭐','🏆'][Math.floor(Math.random()*4)]+' '+streak+'er-Serie!';document.body.appendChild(c);setTimeout(()=>c.remove(),1300)}
+function diffHtml(u,t){
+  u=String(u||'').toLowerCase();const Tc=[...t],U=[...u],m=U.length,n=Tc.length;
+  const L=Array.from({length:m+1},()=>Array(n+1).fill(0));
+  for(let i=m-1;i>=0;i--)for(let j=n-1;j>=0;j--)L[i][j]=U[i]===Tc[j].toLowerCase()?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+  const keep=new Set();let i=0,j=0;
+  while(i<m&&j<n){if(U[i]===Tc[j].toLowerCase()){keep.add(j);i++;j++}else if(L[i+1][j]>=L[i][j+1])i++;else j++}
+  return '<span class="diff">'+Tc.map((c,k)=>keep.has(k)||c===' '?esc(c):`<mark>${esc(c)}</mark>`).join('')+'</span>';
+}
+function quizOptions(v,dir){
+  const lab=x=>dir==='de-en'?x.en[0]:x.de[0],verb=x=>/^to /.test(x.en[0]),tl=lab(v);
+  const others=V.filter(o=>o.id!==v.id&&lab(o)!==tl&&o.de[0]!==v.de[0]);
+  const same=shuffle(others.filter(o=>o.cat===v.cat&&verb(o)===verb(v)));
+  const rest=shuffle(others.filter(o=>!same.includes(o)));
+  return shuffle([v,...[...same,...rest].slice(0,3)]).map(o=>({id:o.id,label:lab(o)}));
+}
+const PRAISE=['Richtig!','Genau so!','Perfekt!','Stark!','Sitzt!'];
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+
+/* Sitzungen */
+let VF={cat:'all',weak:false},vSearch='',vSt='all',vAll=false;
+function vPool(){return V.filter(v=>(VF.cat==='all'||v.cat===VF.cat)&&(!VF.weak||isWeak(v.id)))}
+const VMODES={write:{label:'Vokabeln schreiben',dir:'de-en'},cards:{label:'Karteikarten',dir:'en-de'},quiz:{label:'Schnell-Quiz',dir:'mixed'}};
+function startVocab(mode,poolOverride,label){
+  const pool=poolOverride||vPool();
+  if(!pool.length){toast(VF.weak?'Keine schwachen Vokabeln in dieser Auswahl':'Keine Vokabeln in dieser Auswahl');return}
+  const dir=VMODES[mode].dir;
+  const list=pickVocab(pool,Math.min(10,pool.length)).map(v=>({v,dir:dir==='mixed'?(Math.random()<.5?'de-en':'en-de'):dir}));
+  G={mode:'v'+mode,list,idx:0,score:0,xp:0,wrong:[],req:new Set(),meta:{label:label||VMODES[mode].label,kind:'vocab',vmode:mode,pool:poolOverride}};
+  go('game');renderQ();
+}
+function startVocabWeak(){const w=weakVocab();if(!w.length){toast('Keine schwachen Vokabeln');return}startVocab('write',w,'Schwache Vokabeln')}
+function hintText(w,lvl){
+  if(lvl===1)return esc(w.slice(0,1))+' …';
+  return esc(w.slice(0,1))+[...w.slice(1)].map(c=>/[a-z]/i.test(c)?'_':c===' '?'  ':esc(c)).join(' ')+` <span class="muted" style="letter-spacing:0">(${w.replace(/[^a-z]/gi,'').length} Buchstaben)</span>`;
+}
+function renderVQ(){
+  const it=G.list[G.idx],v=it.v,p=vp(v.id),c=CATS.find(c=>c.id===v.cat);
+  G.done=false;G.tries=0;G.hint=0;
+  const el=$('#v-game');el.style.setProperty('--mc',VT.color);
+  const again=it.again?'Noch einmal · ':'';
+  let body='',acts='';
+  if(G.mode==='vwrite'){
+    body=`<div class="vprompt"><div class="lbl">${again}Schreibe auf Englisch</div><div class="word">${esc(v.de[0])}</div>${v.de.length>1?`<div class="also">auch: ${esc(v.de.slice(1).join(' · '))}</div>`:''}</div>
+      <input class="inp" id="vin" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="Englisch …">
+      <div><button class="hintbtn" id="vHint">${ico('bulb')} Tipp</button><span class="hintline" id="vHintTxt"></span></div>`;
+    acts=`<button class="btn" id="gCheck">Prüfen</button>`;
+  }else if(G.mode==='vcards'){
+    body=`<div class="vprompt"><div class="lbl">${again}Was heißt das auf Deutsch?</div><div class="word">${esc(v.en[0])}<button class="spk" id="vSpk" aria-label="Anhören">${ico('speaker')}</button></div>
+      <div class="reveal hide" id="vRev"><div class="word">${esc(v.de[0])}</div>${v.de.length>1?`<div class="also">auch: ${esc(v.de.slice(1).join(' · '))}</div>`:''}<div class="also" style="margin-top:6px">${ico('bulb')} ${esc(v.tip)}</div></div></div>
+      <p class="hintline" style="font-family:inherit;letter-spacing:0;margin:12px 0 0;display:block;text-align:center;color:var(--muted);font-weight:500;font-size:14px" id="vAsk">Erst im Kopf beantworten, dann aufdecken.</p>`;
+    acts=`<button class="btn" id="vShow">Aufdecken</button>`;
+  }else{
+    const opts=quizOptions(v,it.dir);
+    body=`<div class="vprompt"><div class="lbl">${again}${it.dir==='de-en'?'Wähle die englische Übersetzung':'Wähle die deutsche Bedeutung'}</div><div class="word">${esc(it.dir==='de-en'?v.de[0]:v.en[0])}${it.dir==='en-de'?`<button class="spk" id="vSpk" aria-label="Anhören">${ico('speaker')}</button>`:''}</div></div>
+      <div class="opts ${opts.every(o=>o.label.length<16)?'two':''}">${opts.map(o=>`<button class="opt" data-o="${o.id}">${esc(o.label)}</button>`).join('')}</div>`;
+  }
+  el.innerHTML=`<div class="gbar"><button class="key" id="gBack" aria-label="Zurück">${ico('left')}</button>
+    <div class="prog"><div class="row"><span>${esc(G.meta.label)}</span><span><b>${G.idx+1}</b> / ${G.list.length}</span></div><div class="track"><i style="width:${G.idx/G.list.length*100}%"></i></div></div></div>
+    <div class="gcard"><div class="chiprow"><span class="chip">${c.icon} ${c.label}</span><span class="dots" title="Lernbox ${p.b} von 3">${[0,1,2].map(i=>`<i class="${p.b>i?'on':''}"></i>`).join('')}</span></div>
+    <div style="height:14px"></div>${body}<div class="fb" id="fb"></div>
+    <div class="actions ${acts?'':'hide'}" id="acts">${acts}<button class="btn dark hide" id="gNext">${G.idx+1<G.list.length?'Weiter':'Ergebnis'} ${ico('right')}</button></div></div>`;
+  $('#gBack').onclick=leaveGame;$('#gNext').onclick=next;
+  if($('#vSpk'))$('#vSpk').onclick=()=>speak(v.en[0]);
+  if(G.mode==='vwrite'){
+    const inp=$('#vin');
+    inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();G.done?next():vCheck()}});
+    $('#gCheck').onclick=vCheck;
+    $('#vHint').onclick=()=>{if(G.done)return;G.hint=Math.min(2,G.hint+1);$('#vHintTxt').innerHTML=hintText(v.en[0],G.hint);if(G.hint===2)$('#vHint').disabled=true;inp.focus()};
+    setTimeout(()=>{if(matchMedia('(hover:hover)').matches)inp.focus()},50);
+  }else if(G.mode==='vcards'){
+    $('#vShow').onclick=()=>{
+      $('#vRev').classList.remove('hide');$('#vAsk').classList.add('hide');speak(v.en[0]);
+      $('#acts').innerHTML=`<button class="btn badb" id="vNo">Nicht gewusst</button><button class="btn okb" id="vYes">Gewusst</button>`;
+      $('#vNo').onclick=()=>finishV(false,{r:'bad'});$('#vYes').onclick=()=>finishV(true,{r:'ok'});
+    };
+  }else{
+    el.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      if(G.done)return;const ok=b.dataset.o===v.id;
+      el.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.o===v.id)x.classList.add('right');else if(x===b)x.classList.add('wrong');else x.classList.add('dim')});
+      finishV(ok,{r:ok?'ok':'bad'});
+    });
+  }
+}
+function vCheck(){
+  if(G.done)return;
+  const it=G.list[G.idx],inp=$('#vin'),ans=inp.value;
+  if(!ans.trim()){inp.classList.add('shake');setTimeout(()=>inp.classList.remove('shake'),400);inp.focus();return}
+  const res=vEval(it.v,ans);
+  if((res.r==='near'||res.r==='alt')&&G.tries===0){
+    G.tries++;inp.classList.add('is-warn','shake');setTimeout(()=>inp.classList.remove('shake'),400);
+    showFb('warn',res.r==='alt'?'Auch ein englisches Wort dafür':'Fast!',res.r==='alt'?res.m+' Versuch es noch einmal.':'Prüfe die Schreibweise – Du hast noch einen Versuch.','');
+    inp.focus();return;
+  }
+  finishV(res.r==='ok',res,ans);
+}
+function finishV(ok,res,ans){
+  const it=G.list[G.idx],v=it.v;G.done=true;
+  vUpdate(v.id,ok,G.mode==='vwrite'&&G.hint>0);
+  if(ok){
+    G.score++;streak++;const gain=(G.mode==='vquiz'?6:10)+Math.min(streak-1,5);G.xp+=gain;S.xp+=gain;day().v++;
+    if(streak>0&&streak%5===0)celebrate();
+  }else{
+    streak=0;if(!G.wrong.some(w=>w.v.id===v.id))G.wrong.push(it);
+    if(!G.req.has(v.id)){G.req.add(v.id);G.list.splice(Math.min(G.idx+4,G.list.length),0,{v,dir:it.dir,again:true})}
+  }
+  save();updateHeader();
+  if(G.mode==='vcards'){next();return}
+  if(G.mode==='vwrite'){
+    const inp=$('#vin');inp.disabled=true;inp.classList.remove('is-warn');inp.classList.add(ok?'is-ok':'is-bad');
+    if(ok)showFb('ok',G.hint?'Richtig – mit Tipp':pick(PRAISE),`${ico('bulb')} ${esc(v.tip)}`,esc(v.en.join(' · ')));
+    else showFb('bad',res.r==='near'?'Knapp daneben':'Leider falsch',(res.r==='alt'?res.m+'<br>':'')+(ans&&ans.trim()?'Rot markiert: Hier lag der Fehler.<br>':'')+`${ico('bulb')} ${esc(v.tip)}`,'Richtig: '+diffHtml(ans,v.en[0])+(v.en.length>1?` <span class="muted" style="font-weight:600">(auch: ${esc(v.en.slice(1).filter(e=>!/^it is|^to |\.$/.test(e)).join(', '))})</span>`.replace(' (auch: )',''):''));
+    speak(v.en[0]);
+  }else{
+    showFb(ok?'ok':'bad',ok?pick(PRAISE):'Leider falsch',`${ico('bulb')} ${esc(v.tip)}`,esc(v.en[0])+' = '+esc(v.de[0]));
+    if(ok)speak(v.en[0]);
+  }
+  $('#acts').classList.remove('hide');const c=$('#gCheck');if(c)c.classList.add('hide');
+  const n=$('#gNext');n.classList.remove('hide');
+  if(!matchMedia('(hover:hover)').matches)$('#fb').scrollIntoView({behavior:'smooth',block:'nearest'});
+  setTimeout(()=>n.focus({preventScroll:true}),30);
+}
+
+/* Vokabel-Ansicht */
+function renderVocab(){
+  const st=vStats(),d=day(),pct=Math.min(1,d.v/DAILY_GOAL),C=2*Math.PI*22,wk=weakVocab().length;
+  const cnt=id=>V.filter(v=>v.cat===id).length;
+  $('#v-vocab').innerHTML=`<div class="stack">
+    <div><h2 style="margin:0 4px 2px;font-size:24px;letter-spacing:-.02em">Vokabeln</h2><p class="muted" style="margin:0 4px">${V.length} Vokabeln aus dem Heft. Sicher ist eine Vokabel, wenn Du sie dreimal hintereinander gewusst hast.</p></div>
+    <div class="ring"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="22" fill="none" stroke="var(--line)" stroke-width="6"/><circle cx="26" cy="26" r="22" fill="none" stroke="var(--ok)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-pct)}"/></svg>
+      <div class="grow"><h3>Tagesziel: ${Math.min(d.v,DAILY_GOAL)} / ${DAILY_GOAL}</h3><p>${d.v>=DAILY_GOAL?'Geschafft! Alles Weitere ist Bonus.':'richtige Vokabeln heute'}</p></div></div>
+    <div class="vstats"><div class="vstat ok"><b>${st.ok}</b><span>sicher</span></div><div class="vstat pr"><b>${st.pr}</b><span>am Üben</span></div><div class="vstat"><b>${st.nw}</b><span>noch neu</span></div></div>
+    <div><div class="sec-title" style="margin-top:8px">Was willst Du üben?</div>
+    <div class="chips" id="vCats"><button data-c="all" class="${VF.cat==='all'?'on':''}">📚 Alle <small>${V.length}</small></button>${CATS.map(c=>`<button data-c="${c.id}" class="${VF.cat===c.id?'on':''}">${c.icon} ${c.label} <small>${cnt(c.id)}</small></button>`).join('')}<button class="weak ${VF.weak?'on':''}" id="vWeak">${ico('brain')} Nur Schwachstellen <small>${wk}</small></button></div></div>
+    <div class="modes" style="--mc:${VT.color}">
+      <button class="mode" data-vm="write"><div class="head"><div class="mi">${ico('pen')}</div><div><h3>Schreiben <span class="rec" style="background:${VT.color}">wie in der SA</span></h3><p>Deutsch → Englisch tippen. Mit Tipp-Hilfe und Buchstaben-Check.</p></div></div></button>
+      <button class="mode" data-vm="cards"><div class="head"><div class="mi">${ico('cards')}</div><div><h3>Karteikarten</h3><p>Englisch → Deutsch: im Kopf beantworten, aufdecken, ehrlich bewerten.</p></div></div></button>
+      <button class="mode" data-vm="quiz"><div class="head"><div class="mi">${ico('bolt')}</div><div><h3>Schnell-Quiz</h3><p>Multiple Choice in beide Richtungen – gut für zwischendurch.</p></div></div></button>
+    </div>
+    <div><div class="sec-title">Vokabel-Box</div>
+    <input class="search" id="vSearch" type="search" placeholder="Suchen – Deutsch oder Englisch …" value="${esc(vSearch)}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+    <div class="chips" style="margin-top:10px" id="vSt">${[['all','Alle'],['new','Neu'],['pr','Am Üben'],['ok','Sicher']].map(([k,l])=>`<button data-s="${k}" class="${vSt===k?'on':''}">${l}</button>`).join('')}</div>
+    <div class="vlist" id="vList"></div></div>
+  </div>`;
+  const v=$('#v-vocab');
+  v.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{VF.cat=b.dataset.c;renderVocab()});
+  $('#vWeak').onclick=()=>{VF.weak=!VF.weak;renderVocab()};
+  v.querySelectorAll('[data-vm]').forEach(b=>b.onclick=()=>startVocab(b.dataset.vm));
+  $('#vSearch').oninput=e=>{vSearch=e.target.value;vAll=false;renderVList()};
+  v.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{vSt=b.dataset.s;vAll=false;v.querySelectorAll('[data-s]').forEach(x=>x.classList.toggle('on',x===b));renderVList()});
+  renderVList();
+}
+function renderVList(){
+  const q=vSearch.trim().toLowerCase();
+  const list=V.filter(v=>(VF.cat==='all'||v.cat===VF.cat)&&(vSt==='all'||vStatus(v.id)===vSt)&&(!q||v.en.some(e=>e.toLowerCase().includes(q))||v.de.some(d=>d.toLowerCase().includes(q))));
+  const show=vAll?list:list.slice(0,40);
+  const el=$('#vList');
+  el.innerHTML=list.length?show.map(v=>{const s=vStatus(v.id);return `<div class="vrow"><span class="st ${s==='new'?'':s}" title="${s==='ok'?'sicher':s==='pr'?'am Üben':'neu'}"></span><div class="grow"><b>${esc(v.en[0])}</b> <span class="de">– ${esc(v.de[0])}</span><div class="tp">${esc(v.tip)}</div></div><button class="spk" data-sp="${v.id}" aria-label="Anhören">${ico('speaker')}</button></div>`}).join('')+(list.length>show.length?`<button class="more" id="vMore">Alle ${list.length} anzeigen</button>`:'')
+    :`<div class="vrow"><div class="grow muted">Keine Vokabel gefunden.</div></div>`;
+  el.querySelectorAll('[data-sp]').forEach(b=>b.onclick=()=>speak(V.find(x=>x.id===b.dataset.sp).en[0]));
+  if($('#vMore'))$('#vMore').onclick=()=>{vAll=true;renderVList()};
+}
+
+/* =========================================================================
+   FEHLER-LISTE
+   ========================================================================= */
+function renderReview(){
+  const v=$('#v-review'),wv=weakVocab();
+  if(!S.missed.length&&!wv.length){
+    v.innerHTML=`<div class="empty"><div class="ei">${ico('check')}</div><h2>Keine offenen Fehler</h2><p>${S.mastered.length||Object.keys(S.vocab).length?'Deine Fehler-Liste ist leer. Weiter mit Vokabeln, einem Thema oder einer Probe-Schulaufgabe!':'Sobald Du übst, landen falsche Antworten hier – zum gezielten Wiederholen.'}</p><button class="btn" style="max-width:280px;margin:0 auto" onclick="go('home')">Zum Training</button></div>`;
+    return;
+  }
+  const by=TOPICS.map(t=>({t,qs:Q.filter(q=>q.t===t.id&&S.missed.includes(q.id))})).filter(x=>x.qs.length);
+  v.innerHTML=`<div class="stack">
+    <div><h2 style="margin:0 4px 2px;font-size:24px;letter-spacing:-.02em">Fehler-Wiederholung</h2><p class="muted" style="margin:0 4px">Ein Fehler verschwindet von der Liste, sobald Du ihn richtig löst.</p></div>
+    <div class="actions" style="border:0;padding:0;margin:0;flex-wrap:wrap">
+      ${wv.length?`<button class="btn" style="--mc:${VT.color};min-width:200px" id="rVoc">${ico('cards')} ${wv.length} ${wv.length===1?'Vokabel':'Vokabeln'} üben</button>`:''}
+      ${S.missed.length?`<button class="btn rose" style="min-width:200px" id="rStart">${ico('brain')} ${S.missed.length} Grammatik-${S.missed.length===1?'Aufgabe':'Aufgaben'}</button>`:''}
+    </div>
+    ${wv.length?`<div class="cs" style="--mc:${VT.color};border-top-width:4px"><h3 style="font-size:16px">Vokabeln <span class="muted" style="font-weight:600">· ${wv.length}</span></h3>
+      <ul style="margin-top:8px">${wv.map(x=>`<li>${esc(x.de[0])} → <b>${esc(x.en[0])}</b></li>`).join('')}</ul></div>`:''}
+    ${by.map(x=>`<div class="cs" style="--mc:${x.t.color};border-top-width:4px"><h3 style="font-size:16px">${x.t.name} <span class="muted" style="font-weight:600">· ${x.qs.length}</span></h3>
+      <ul style="margin-top:8px">${x.qs.map(q=>`<li>${esc(q.type==='gap'?fullSentence(q):q.type==='order'?q.c:(q.s?q.s+' → '+solutionText(q):solutionText(q)))}</li>`).join('')}</ul></div>`).join('')}
+  </div>`;
+  if($('#rStart'))$('#rStart').onclick=startReview;
+  if($('#rVoc'))$('#rVoc').onclick=startVocabWeak;
+}
+
+/* =========================================================================
+   PROBE-SCHULAUFGABE
+   ========================================================================= */
+const EX={running:false,qs:[],ans:{},timed:true,left:900,timer:null};
+function grade(p){
+  if(p>=92)return {g:1,l:'sehr gut',c:'Überragend – Du bist top vorbereitet!'};
+  if(p>=80)return {g:2,l:'gut',c:'Klasse Leistung! Nur noch Kleinigkeiten feinschleifen.'};
+  if(p>=65)return {g:3,l:'befriedigend',c:'Solide Basis. Schau Dir Deine Fehler noch einmal an.'};
+  if(p>=50)return {g:4,l:'ausreichend',c:'Da geht noch mehr – nimm Dir die Fehler-Liste und den Spickzettel vor.'};
+  if(p>=30)return {g:5,l:'mangelhaft',c:'Kein Stress – dafür übst Du ja. Geh die Themen einzeln durch.'};
+  return {g:6,l:'ungenügend',c:'Lies zuerst den Spickzettel und starte dann mit Thema 1.'};
+}
+function renderExamStart(){
+  const hist=S.exams.slice(-5);
+  $('#v-exam').innerHTML=`<div class="gcard examhead">
+    <div class="ei">${ico('clock')}</div>
+    <h2>Probe-Schulaufgabe</h2>
+    <p>16 Grammatik-Aufgaben (je 4 pro Thema) und 8 Vokabeln – wie in der echten Schulaufgabe ohne Sofort-Feedback. Am Ende bekommst Du eine Note und siehst, was noch wackelt.</p>
+    <div class="rules"><div><b>24</b><small>Aufgaben</small></div><div><b>20</b><small>Minuten</small></div><div><b>1–6</b><small>Note</small></div></div>
+    <div class="actions" style="border:0;padding:0;max-width:520px;margin:0 auto;flex-wrap:wrap">
+      <button class="btn" id="eTimed">${ico('clock')} Mit Timer starten</button>
+      <button class="btn ghost" id="eFree">Ohne Zeitlimit</button>
+    </div>
+    ${hist.length?`<p class="note" style="margin-top:18px">Deine letzten Probe-Noten: ${hist.map(h=>`<b>${h.grade}</b>`).join(' · ')}</p>`:''}
+  </div>`;
+  $('#eTimed').onclick=()=>startExam(true);$('#eFree').onclick=()=>startExam(false);
+}
+function startExam(timed){
+  const qs=[];
+  for(const t of TOPICS){
+    const pool=shuffle(Q.filter(q=>q.t===t.id&&q.type!=='order'));
+    const gaps=pool.filter(q=>q.type!=='mc'),mcs=pool.filter(q=>q.type==='mc');
+    qs.push(...shuffle([...gaps.slice(0,3),...mcs.slice(0,1)]).slice(0,4));
+  }
+  pickVocab(V,8).forEach(v=>qs.push({id:'X'+v.id,t:'vocab',type:'vocab',v,i:'Übersetze ins Englische.',s:v.de[0],ex:esc(v.tip)}));
+  Object.assign(EX,{running:true,qs,ans:{},timed,left:1200});
+  clearInterval(EX.timer);
+  if(timed)EX.timer=setInterval(()=>{EX.left--;paintTimer();if(EX.left<=0){clearInterval(EX.timer);toast('Zeit ist um!');submitExam()}},1000);
+  renderExamRun();
+}
+function stopExam(){clearInterval(EX.timer);EX.running=false}
+function answeredCount(){return EX.qs.filter(q=>{const a=EX.ans[q.id];return Array.isArray(a)?a.some(x=>x&&x.trim()):a&&String(a).trim()}).length}
+function paintTimer(){
+  const el=$('#eTimer');if(!el)return;
+  const m=Math.floor(EX.left/60),s=EX.left%60;
+  el.innerHTML=`${ico('clock')} ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  el.classList.toggle('low',EX.left<120);
+}
+function paintCount(){const el=$('#eCount');if(el)el.textContent=`${answeredCount()} / ${EX.qs.length} bearbeitet`;
+  EX.qs.forEach(q=>{const c=document.querySelector(`.eq[data-q="${q.id}"]`);const a=EX.ans[q.id];if(c)c.classList.toggle('done',Array.isArray(a)?a.some(x=>x&&x.trim()):!!(a&&String(a).trim()))})}
+function renderExamRun(){
+  const v=$('#v-exam');
+  let html=`<div class="ebar">${EX.timed?'<div class="timer" id="eTimer"></div>':''}<div style="flex:1;font-weight:700;font-size:14px" id="eCount"></div><button class="btn auto" id="eSubmit" style="height:44px;font-size:15px">Abgeben</button></div>`;
+  EX.qs.forEach((q,n)=>{
+    const t=T(q.t);
+    let body='';
+    if(q.type==='gap'){let k=0;body=`<div class="sentence">${esc(q.s).replace(/___/g,()=>{const sz=(q.sz&&q.sz[k])||'';return `<input class="blank ${sz}" data-q="${q.id}" data-k="${k++}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">`})}</div>`}
+    else if(q.type==='write'||q.type==='vocab'){body=`<div class="sentence">${esc(q.s)}</div><input class="inp" data-q="${q.id}" data-k="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Auf Englisch …">`}
+    else{body=(q.s?`<div class="sentence">${esc(q.s)}</div>`:'')+`<div class="opts ${q.two?'two':''}">${shuffle(q.o).map(o=>`<button class="opt" data-q="${q.id}" data-o="${esc(o)}">${esc(o)}</button>`).join('')}</div>`}
+    html+=`<div class="eq" data-q="${q.id}" style="--mc:${t.color}"><div class="n"><span>Aufgabe ${n+1}</span><span>${t.name}</span></div><p class="instr">${esc(q.i)}</p>${body}</div>`;
+  });
+  html+=`<button class="btn" id="eSubmit2" style="margin-top:6px">Schulaufgabe abgeben</button>`;
+  v.innerHTML=html;
+  v.querySelectorAll('input[data-q]').forEach(el=>el.addEventListener('input',()=>{
+    const q=EX.qs.find(x=>x.id===el.dataset.q);
+    if(q.type==='gap'&&q.a.length>1){const a=EX.ans[q.id]||[];a[+el.dataset.k]=el.value;EX.ans[q.id]=a}else EX.ans[q.id]=el.value;
+    paintCount();
+  }));
+  v.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    EX.ans[b.dataset.q]=b.dataset.o;
+    v.querySelectorAll(`.opt[data-q="${b.dataset.q}"]`).forEach(x=>x.classList.toggle('sel',x===b));paintCount();
+  });
+  const sub=()=>{const open=EX.qs.length-answeredCount();
+    if(open>0)confirmDlg('Wirklich abgeben?',`${open} ${open===1?'Aufgabe ist':'Aufgaben sind'} noch leer. Leere Aufgaben zählen als falsch.`,'Abgeben',submitExam,'Weiterschreiben');
+    else confirmDlg('Schulaufgabe abgeben?','Danach siehst Du Deine Note und die Korrektur.','Abgeben',submitExam,'Nochmal prüfen')};
+  $('#eSubmit').onclick=sub;$('#eSubmit2').onclick=sub;
+  paintTimer();paintCount();window.scrollTo({top:0});
+}
+function submitExam(){
+  stopExam();
+  const res=EX.qs.map(q=>{const a=EX.ans[q.id]||(q.type==='gap'&&q.a.length>1?[]:'');const r=evaluate(q,a);return {q,a,ok:r.r==='ok',near:r.r==='near',trap:r.m&&r.r==='trap'?r.m:''}});
+  let correct=0;
+  res.forEach(x=>{
+    if(x.ok)correct++;
+    if(x.q.type==='vocab'){vUpdate(x.q.v.id,x.ok,false);return}
+    if(x.ok){if(!S.mastered.includes(x.q.id))S.mastered.push(x.q.id);S.missed=S.missed.filter(i=>i!==x.q.id)}
+    else if(!S.missed.includes(x.q.id))S.missed.push(x.q.id);
+  });
+  const p=Math.round(correct/res.length*100),gr=grade(p);
+  S.xp+=correct*10;S.exams.push({date:Date.now(),grade:gr.g,p});save();updateHeader();
+  const per=[...TOPICS,VT].map(t=>{const r=res.filter(x=>x.q.t===t.id);return {t,ok:r.filter(x=>x.ok).length,n:r.length}});
+  const weak=per.filter(x=>x.ok<x.n).sort((a,b)=>a.ok/a.n-b.ok/b.n)[0];
+  const showAns=x=>{const a=Array.isArray(x.a)?x.a.filter(Boolean).join(' … '):x.a;return a&&String(a).trim()?esc(a):'<i>(leer)</i>'};
+  $('#v-exam').innerHTML=`<div class="gcard sum">
+    <p class="eyebrow">Dein Ergebnis</p>
+    <div class="grade">${gr.g}</div>
+    <h2 style="font-size:22px">${gr.l} · ${correct} von ${res.length} Punkten (${p}%)</h2>
+    <p class="sub">${gr.c}</p>
+    <div class="tbreak">${per.map(x=>`<div class="tb" style="--mc:${x.t.color}"><div class="row"><span>${x.t.name}</span><span>${x.ok}/${x.n}</span></div><div class="bar"><i style="width:${x.ok/x.n*100}%"></i></div></div>`).join('')}</div>
+    <div class="sumbtns">
+      ${weak?`<button class="btn" style="--mc:${weak.t.color}" data-practice="${weak.t.id}">${ico('target')} ${weak.t.name} üben</button>`:''}
+      ${S.missed.length+weakVocab().length?`<button class="btn rose" id="xRev">Fehler üben (${S.missed.length+weakVocab().length})</button>`:''}
+      <button class="btn ghost" id="xNew">${ico('rotate')} Neue Probe-SA</button>
+    </div>
+    <p class="note">Der Notenschlüssel ist ein Richtwert – Deine Lehrkraft kann anders bewerten.</p>
+  </div>
+  <div class="sec-title">Korrektur</div>
+  ${res.map((x,n)=>`<div class="corr ${x.ok?'ok':'bad'}"><div class="q">${n+1}. ${esc(x.q.type==='vocab'?'Übersetze: '+x.q.s:(x.q.s||x.q.i))}</div>
+    <div class="you">${x.ok?ico('check'):ico('x')} Deine Antwort: <b>${showAns(x)}</b>${x.near?' <span class="muted">(knapp daneben – Schreibweise!)</span>':''}</div>
+    ${x.ok?'':`<div class="you">Richtig: <b>${esc(x.q.type==='gap'?fullSentence(x.q):solutionText(x.q))}</b></div>`}
+    ${x.ok?'':`<div class="ex">${x.trap?x.trap+' ':''}${x.q.ex}</div>`}</div>`).join('')}`;
+  paintIcons($('#v-exam'));
+  if($('#xRev'))$('#xRev').onclick=()=>go('review');
+  $('#xNew').onclick=renderExamStart;
+  window.scrollTo({top:0});
+}
+
+/* =========================================================================
+   INIT
+   ========================================================================= */
+paintIcons();
+go('home');
+</script>
+</body>
+</html>
